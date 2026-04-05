@@ -25,7 +25,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.20"
                 android:paddingLeft="15sp"
-                android:text="Photovoltaic System - At To Node"
+                android:text="WECS"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -38,6 +38,7 @@
                 app:tint="@color/white" />
 
         </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,7 +181,7 @@
                         android:background="@drawable/pop_btn_background"
                         android:gravity="center"
                         android:padding="10sp"
-                        android:text="Photovoltaic"
+                        android:text="Reactor"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -242,7 +243,7 @@
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
                 <LinearLayout
-                    android:id="@+id/photo_voltaic_info_layout"
+                    android:id="@+id/winddeviceinfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -251,22 +252,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5sp"
-                        android:text="Photovoltaic System- At To Node"
+                        android:text="WECS"
                         android:textColor="@color/red"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cdcdcd" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#cdcdcd" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2.0"
-                        android:layout_marginBottom="3dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0"
+                    android:layout_marginBottom="3dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -293,6 +294,7 @@
                         android:background="@drawable/edt_txt_background" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -358,6 +360,7 @@
                         android:background="@drawable/edt_txt_background" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -390,6 +393,7 @@
                         android:background="@drawable/edt_txt_background" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -422,6 +426,7 @@
                         android:background="@drawable/edt_txt_background" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
@@ -441,60 +446,90 @@
                     android:layout_height="1dp"
                     android:background="#cdcdcd" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#F67C7C" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="5sp"
-                    android:text="System Components"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#cdcdcd" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:weightSum="2.0"
+                    android:layout_marginBottom="3dp">
 
-                    <CheckBox
-                        android:id="@+id/a_chks_box"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1.20"
+                        android:padding="5sp"
+                        android:text="Inverter Type"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/Inverter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.83"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="5sp"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:background="@drawable/edt_txt_background" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3.0"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="5sp"
+                        android:text="Phase"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/a_chk_boxs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
                         android:clickable="false"
-                        android:paddingStart="8dp"
-                        android:text="DC Photovoltaic"
+                        android:paddingLeft="8sp"
+                        android:text="AB"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <CheckBox
-                        android:id="@+id/b_chks_box"
+                        android:id="@+id/b_chk_boxs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
                         android:clickable="false"
-                        android:paddingStart="8dp"
-                        android:text="DC BESS"
+                        android:paddingLeft="8sp"
+                        android:text="BC"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <CheckBox
-                        android:id="@+id/c_chks_box"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/c_chk_boxs"
+                        android:layout_width="127dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0"
                         android:clickable="false"
-                        android:paddingStart="8dp"
-                        android:text="DC/AC Converter"
+                        android:paddingLeft="8sp"
+                        android:text="CA"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -509,9 +544,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:paddingStart="8dp"
-                    android:text="DC Bus Voltage Controlled by"
+                    android:paddingLeft="5sp"
+                    android:text="Generator"
                     android:textColor="@color/red"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -519,17 +553,212 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="4dp"
                     android:background="#cdcdcd" />
 
-                    <Spinner
-                        android:id="@+id/mySpinner"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3.0"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp">
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/spinner_bg"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="5sp"
+                        android:text="Rated Power"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/shunt_Losses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="4sp"
+                        android:text=""
+                        android:background="@drawable/edt_txt_background"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="5sp"
+                        android:text="KW"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#F67C7C" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5sp"
+                    android:text="Generator Grid-Side Output Generation"
+                    android:textColor="@color/red"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#cdcdcd" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0"
+                    android:layout_marginBottom="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.20"
+                        android:padding="5sp"
+                        android:text="@string/Load_model"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/Load_Model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.83"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="5sp"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:background="@drawable/edt_txt_background" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3.0"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="5sp"
+                        android:text="Active Generation"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Active_Generation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="4sp"
+                        android:text=""
+                        android:background="@drawable/edt_txt_background"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="5sp"
+                        android:text="KW"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3.0"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="5sp"
+                        android:text="Power Factor"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Power_factor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="4sp"
+                        android:text=""
+                        android:background="@drawable/edt_txt_background"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:padding="5sp"
+                        android:text="%"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/a_chks_box"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:paddingStart="5dp"
+                        android:text="Override with Active Power Controls"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/b_chks_box"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:paddingStart="5dp"
+                        android:text="Override with Reactive Power Controls"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+
+
+                </LinearLayout>
 
                 </LinearLayout>
 
@@ -2467,14 +2696,9 @@
                 </LinearLayout>
 
 
-
-
             </LinearLayout>
+
         </ScrollView>
-
-
-
-
 
     </RelativeLayout>
 

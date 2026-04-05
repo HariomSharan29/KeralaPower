@@ -12,11 +12,11 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.JsonObject;
 import com.techlabs.apdcl.R;
-import com.techlabs.apdcl.databinding.PhotoLayoutSnippetBinding;
+import com.techlabs.apdcl.databinding.SnipetLayoutBinding;
 
 import java.util.Objects;
 
-public class PhotoVoltaicSnippet extends Dialog {
+public class BatterySnippet extends Dialog {
 
     private final Context mainContext;
     private final JsonObject jsonObject;
@@ -25,9 +25,9 @@ public class PhotoVoltaicSnippet extends Dialog {
     private final String equipmentId;
     private final String networkId;
     private final String deviceType;
-    private PhotoLayoutSnippetBinding binding;
+    private SnipetLayoutBinding binding;
 
-    public PhotoVoltaicSnippet(@NonNull Context context, String sectionID, String deviceNumber, String equipmentId, String networkId, String deviceType, JsonObject jsonObject) {
+    public BatterySnippet(@NonNull Context context, String sectionID, String deviceNumber, String equipmentId, String networkId, String deviceType, JsonObject jsonObject) {
         super(context);
         this.mainContext = context;
         this.jsonObject = jsonObject;
@@ -42,29 +42,28 @@ public class PhotoVoltaicSnippet extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = PhotoLayoutSnippetBinding.inflate(getLayoutInflater());
+        binding = SnipetLayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         View root = Objects.requireNonNull(getWindow()).getDecorView().getRootView();
         root.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         root.setBackgroundResource(R.drawable.pop_background);
 
-        binding.featuresTv.setText("Photovoltaic");
+        binding.featuresTv.setText("Battery");
         binding.cableTV.setText("Device No.");
         binding.lengthTV.setText("Equip ID");
+
         binding.networkId.setText(networkId != null ? networkId : "");
         binding.sectionId.setText(sectionID != null ? sectionID : "");
         binding.cableID.setText(deviceNumber != null ? deviceNumber : "");
         binding.lengthId.setText(equipmentId != null ? equipmentId : "");
 
         binding.imgClose.setOnClickListener(v -> dismiss());
+
         binding.moreBtn.setOnClickListener(v -> {
             jsonObject.addProperty("DeviceNumber", deviceNumber);
             jsonObject.addProperty("DeviceType", deviceType);
-            jsonObject.addProperty("SectionId", sectionID);
-            jsonObject.addProperty("NetworkId", networkId);
-            jsonObject.addProperty("EquipmentId", equipmentId);
-            PhotoVoltaicSystemDialog dialog = new PhotoVoltaicSystemDialog(mainContext, jsonObject);
+            BatteryDeviceInfoDialog dialog = new BatteryDeviceInfoDialog(mainContext, jsonObject);
             dialog.show();
         });
     }

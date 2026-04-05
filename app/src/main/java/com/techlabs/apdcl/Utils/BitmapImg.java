@@ -7,6 +7,66 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class BitmapImg {
+    public static Bitmap Battery() {
+        String text = "BAT";
+        int textSize = 38;
+        int textColor = Color.BLACK;
+        int backgroundColor = Color.TRANSPARENT;
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextSize(textSize);
+        paint.setColor(textColor);
+        paint.setTextAlign(Paint.Align.CENTER);
+        Rect textBounds = new Rect();
+        paint.getTextBounds(text, 0, text.length(), textBounds);
+        int width = textBounds.width() + 20;
+        int height = textBounds.height() + 20;
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawColor(backgroundColor);
+        canvas.drawText(text, width / 2f, height / 2f + textBounds.height() / 2f, paint);
+        return bitmap;
+    }
+
+    public static Bitmap Wind() {
+        String text = "WND";
+        int textSize = 38;
+        int textColor = Color.BLACK;
+        int backgroundColor = Color.TRANSPARENT;
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextSize(textSize);
+        paint.setColor(textColor);
+        paint.setTextAlign(Paint.Align.CENTER);
+        Rect textBounds = new Rect();
+        paint.getTextBounds(text, 0, text.length(), textBounds);
+        int width = textBounds.width() + 20;
+        int height = textBounds.height() + 20;
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawColor(backgroundColor);
+        canvas.drawText(text, width / 2f, height / 2f + textBounds.height() / 2f, paint);
+        return bitmap;
+    }
+
+    public static Bitmap PhotoVoltaic() {
+        String text = "PV";
+        int textSize = 38;
+        int textColor = Color.BLACK;
+        int backgroundColor = Color.TRANSPARENT;
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextSize(textSize);
+        paint.setColor(textColor);
+        paint.setTextAlign(Paint.Align.CENTER);
+        Rect textBounds = new Rect();
+        paint.getTextBounds(text, 0, text.length(), textBounds);
+        int width = textBounds.width() + 20;
+        int height = textBounds.height() + 20;
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawColor(backgroundColor);
+        canvas.drawText(text, width / 2f, height / 2f + textBounds.height() / 2f, paint);
+        return bitmap;
+    }
+
     public static Bitmap Spotload(){
         String text = "\u3403";
         int textSize = 85;

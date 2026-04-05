@@ -31,7 +31,7 @@ public class ShuntReactorSnippet extends Dialog {
         super(context);
         this.mainContext = context;
         this.jsonObject = jsonObject;
-        this.sectionID = DeviceNumber;
+        this.sectionID = sectionID;
         this.DeviceNumber = DeviceNumber;
         this.EquipmentId = EquipmentId;
         this.NetworkId = NetworkId;
@@ -49,7 +49,7 @@ public class ShuntReactorSnippet extends Dialog {
         root.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         root.setBackgroundResource(R.drawable.pop_background);
 
-        binding.featuresTv.setText("Shunt ShuntReactorModel");
+        binding.featuresTv.setText("Shunt Reactor");
         binding.cableTV.setText("Device No.");
         binding.lengthTV.setText("Equip ID");
 

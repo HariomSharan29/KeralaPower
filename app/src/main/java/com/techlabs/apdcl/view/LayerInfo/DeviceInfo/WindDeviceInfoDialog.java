@@ -3,13 +3,13 @@ package com.techlabs.apdcl.view.LayerInfo.DeviceInfo;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,12 +20,11 @@ import com.google.gson.JsonObject;
 import com.techlabs.apdcl.R;
 import com.techlabs.apdcl.Utils.PrefManager;
 import com.techlabs.apdcl.Utils.ResponseDataUtils;
-import com.techlabs.apdcl.databinding.BreakerMoreinfoLayoutBinding;
-import com.techlabs.apdcl.databinding.ShuntreactordialogBinding;
+import com.techlabs.apdcl.databinding.WindDeviceDialogBinding;
 import com.techlabs.apdcl.models.Line.Cable;
 import com.techlabs.apdcl.models.Line.Overhead;
 import com.techlabs.apdcl.models.Line.Unbalanced;
-import com.techlabs.apdcl.models.ShuntReactorModel;
+import com.techlabs.apdcl.models.device.Wind;
 import com.techlabs.apdcl.retrofit.ApiInterface;
 import com.techlabs.apdcl.retrofit.RetrofitClient;
 
@@ -35,86 +34,64 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ShuntReactorDialog extends Dialog {
+public class WindDeviceInfoDialog extends Dialog {
 
-    private Context mainContext;
-    private ShuntreactordialogBinding binding;
-    private JsonObject jsonObject;
-    private JsonObject requestObject = new JsonObject();
+    private final Context mainContext;
+    private final JsonObject jsonObject;
+    private WindDeviceDialogBinding binding;
     private PrefManager prefManager;
-    private String[] unBalanceIdList;
-    private String currentLineId;
+    private LinearLayout nodeInfoLayout;
+    private TextView idFromNodesTv;
+    private TextView idToNodeTv;
 
-    public ShuntReactorDialog(@NonNull Context context, JsonObject jsonObject) {
+    private JsonObject requestObject = new JsonObject();
+
+    public WindDeviceInfoDialog(@NonNull Context context, JsonObject jsonObject) {
         super(context);
         this.mainContext = context;
         this.jsonObject = jsonObject;
     }
 
-    @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ShuntreactordialogBinding.inflate(getLayoutInflater());
+        binding = WindDeviceDialogBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        View MainLayoutBackGround = Objects.requireNonNull(getWindow()).getDecorView().getRootView();
-        MainLayoutBackGround.setBackground(getContext().getDrawable(R.drawable.pop_layout_background));
+        View root = Objects.requireNonNull(getWindow()).getDecorView().getRootView();
+        root.setBackground(getContext().getDrawable(R.drawable.pop_layout_background));
         prefManager = new PrefManager(mainContext);
+        nodeInfoLayout = binding.getRoot().findViewById(R.id.nodeInfo_layout);
+        idFromNodesTv = binding.getRoot().findViewById(R.id.id_fromNodes_tv);
+        idToNodeTv = binding.getRoot().findViewById(R.id.id_toNode_tv);
 
+        binding.headerTitle.setText("Wind");
+        binding.reactorBtn.setText("Wind");
         binding.btnLayout.setBackground(getContext().getDrawable(R.drawable.background_layout));
-        binding.reactorBtn.setText("Reactor");
-        binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
-        binding.cableBtn.setTextColor(getContext().getColor(R.color.white));
+        binding.reactorBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
+        binding.reactorBtn.setTextColor(getContext().getColor(R.color.black));
         binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
         binding.nodeBtn.setTextColor(getContext().getColor(R.color.white));
-        binding.shuntReactorDialog.setVisibility(View.VISIBLE);
-        binding.editReactorLayout.setVisibility(View.GONE);
-        binding.headerTitle.setText("Shunt Reactor");
-        binding.infoTitleTv.setText("Shunt Reactor");
-        binding.cableBtn.setVisibility(View.INVISIBLE);
+        binding.cableBtn.setVisibility(View.GONE);
+        binding.winddeviceinfo.setVisibility(View.VISIBLE);
+        nodeInfoLayout.setVisibility(View.GONE);
+        binding.imgClose.setOnClickListener(v -> dismiss());
 
-        binding.imgClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
-
-        if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(getContext())) {
-            getShuntReactorInfo();
-        } else {
-            final Dialog dialog = new Dialog(getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.no_internet_dialog);
-            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(getContext().getDrawable(R.drawable.pop_background));
-            LottieAnimationView lottieAnimationView = dialog.findViewById(R.id.animation_view);
-            Button RetryBtn = dialog.findViewById(R.id.btnDialog);
-            lottieAnimationView.playAnimation();
-            RetryBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(getContext())) {
-                        getShuntReactorInfo();
-                    }
-                }
-            });
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.setCancelable(false);
-            dialog.show();
-        }
-
-        binding.reactorBtn.setOnClickListener(view -> {
+        binding.reactorBtn.setOnClickListener(v -> {
             binding.reactorBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
             binding.reactorBtn.setTextColor(getContext().getColor(R.color.black));
-            binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
-            binding.cableBtn.setTextColor(getContext().getColor(R.color.white));
             binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
             binding.nodeBtn.setTextColor(getContext().getColor(R.color.white));
-            binding.shuntReactorDialog.setVisibility(View.VISIBLE);
-            binding.cableInfoLayout.setVisibility(View.GONE);
-            binding.overheadInfoLayout.setVisibility(View.GONE);
-            binding.unbalanceInfoLayout.setVisibility(View.GONE);
-            binding.nodeInfoLayout.setVisibility(View.GONE);
+            binding.winddeviceinfo.setVisibility(View.VISIBLE);
+            nodeInfoLayout.setVisibility(View.GONE);
+        });
+
+        binding.nodeBtn.setOnClickListener(v -> {
+            binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
+            binding.nodeBtn.setTextColor(getContext().getColor(R.color.black));
+            binding.reactorBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
+            binding.reactorBtn.setTextColor(getContext().getColor(R.color.white));
+            binding.winddeviceinfo.setVisibility(View.GONE);
+            nodeInfoLayout.setVisibility(View.VISIBLE);
         });
 
         binding.cableBtn.setOnClickListener(view -> {
@@ -124,7 +101,7 @@ public class ShuntReactorDialog extends Dialog {
             binding.nodeBtn.setTextColor(getContext().getColor(R.color.white));
             binding.reactorBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
             binding.reactorBtn.setTextColor(getContext().getColor(R.color.white));
-            binding.shuntReactorDialog.setVisibility(View.GONE);
+            binding.winddeviceinfo.setVisibility(View.GONE);
             binding.nodeInfoLayout.setVisibility(View.GONE);
             if (binding.cableBtn.getText().toString().equals("Cable")) {
                 binding.cableInfoLayout.setVisibility(View.VISIBLE);
@@ -186,224 +163,173 @@ public class ShuntReactorDialog extends Dialog {
             } else {
                 binding.overheadInfoLayout.setVisibility(View.GONE);
                 binding.cableInfoLayout.setVisibility(View.GONE);
-                binding.shuntReactorDialog.setVisibility(View.GONE);
+                binding.winddeviceinfo.setVisibility(View.GONE);
                 binding.unbalanceInfoLayout.setVisibility(View.VISIBLE);
                 getUnBalanceInfo();
             }
 
         });
 
-        binding.nodeBtn.setOnClickListener(view -> {
-            binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
-            binding.nodeBtn.setTextColor(getContext().getColor(R.color.black));
-            binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
-            binding.cableBtn.setTextColor(getContext().getColor(R.color.white));
-            binding.reactorBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
-            binding.reactorBtn.setTextColor(getContext().getColor(R.color.white));
-            binding.nodeInfoLayout.setVisibility(View.VISIBLE);
-            binding.shuntReactorDialog.setVisibility(View.GONE);
-            binding.cableInfoLayout.setVisibility(View.GONE);
-            binding.overheadInfoLayout.setVisibility(View.GONE);
-            binding.unbalanceInfoLayout.setVisibility(View.GONE);
-        });
-
-    }
-
-    private void getShuntReactorInfo() {
-        binding.shuntReactorDialog.setVisibility(View.GONE);
-        binding.shimmerView.setVisibility(View.VISIBLE);
-        binding.shimmerView.startShimmer();
-        if (prefManager.getUserType() != null) {
-            jsonObject.addProperty("UserType", prefManager.getUserType());
-            jsonObject.addProperty("CYMDBNET", prefManager.getDBName());
-            ApiInterface apiInterface = RetrofitClient.getClient().create(ApiInterface.class);
-            Call<ShuntReactorModel> call = apiInterface.getReactorData("Bearer " + prefManager.getAccessToken(), jsonObject);
-            call.enqueue(new Callback<ShuntReactorModel>() {
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void onResponse(@NonNull Call<ShuntReactorModel> call, @NonNull Response<ShuntReactorModel> response) {
-                    binding.shuntReactorDialog.setVisibility(View.VISIBLE);
-                    binding.shimmerView.stopShimmer();
-                    binding.shimmerView.setVisibility(View.GONE);
-                    if (response.code() == 200) {
-                        try {
-                            ShuntReactorModel shuntReactorModel = response.body();
-                            assert shuntReactorModel != null;
-                            if (shuntReactorModel.getOutput() != null) {
-                                ShuntReactorModel.Output output = shuntReactorModel.getOutput();
-                                if (output.getDeviceTypeLine() != null && output.getDeviceTypeLine() == 1) {
-                                    binding.cableBtn.setText("Cable");
-                                } else if (output.getDeviceTypeLine() != null && output.getDeviceTypeLine() == 2) {
-                                    binding.cableBtn.setText("Balance");
-                                } else if (output.getDeviceTypeLine() != null && output.getDeviceTypeLine() == 17) {
-                                    binding.cableBtn.setText("UnBalance");
-                                } else {
-                                    binding.cableBtn.setText("");
-                                }
-
-                                if (output.getSectionId() != null && output.getDeviceTypeLine() != null && prefManager.getUserType() != null) {
-                                    requestObject.addProperty("DeviceNumber", output.getLineDeviceNumber());
-                                    requestObject.addProperty("DeviceType", output.getDeviceTypeLine().toString());
-                                    requestObject.addProperty("UserType", prefManager.getUserType());
-                                    requestObject.addProperty("CYMDBNET", prefManager.getDBName());
-                                }
-
-                                if (output.getSectionId() != null && !output.getSectionId().isEmpty() && !output.getSectionId().equals("null")) {
-                                    binding.sectionIdEdt.setText(output.getSectionId());
-                                }
-
-                                if (output.getPhase() != null) {
-                                    if (output.getPhase() == 7) {
-                                        binding.aChkBox.setChecked(true);
-                                        binding.bChkBox.setChecked(true);
-                                        binding.cChkBox.setChecked(true);
-                                    } else if (output.getPhase() == 1) {
-                                        binding.aChkBox.setChecked(true);
-                                        binding.bChkBox.setChecked(false);
-                                        binding.cChkBox.setChecked(false);
-                                    } else if (output.getPhase() == 2) {
-                                        binding.bChkBox.setChecked(true);
-                                        binding.cChkBox.setChecked(false);
-                                        binding.aChkBox.setChecked(false);
-                                    } else if (output.getPhase() == 3) {
-                                        binding.cChkBox.setChecked(true);
-                                        binding.aChkBox.setChecked(false);
-                                        binding.bChkBox.setChecked(false);
-                                    }
-                                }
-
-                                /*if (shuntReactorModel.getOutput().get(0).getZoneId() != null) {
-                                    binding.zoneTv.setText(shuntReactorModel.getOutput().get(0).getZoneId().toString());
-                                }*/
-
-                                if (output.getEquipmentId() != null && !output.getEquipmentId().isEmpty() && !output.getEquipmentId().equals("null")) {
-                                    binding.shuntId.setText(output.getEquipmentId());
-                                }
-
-                                if (output.getDeviceNumber() != null && !output.getDeviceNumber().isEmpty() && !output.getDeviceNumber().equals("null")) {
-                                    binding.NumShunt.setText(output.getDeviceNumber());
-                                }
-
-                                if (output.getStatus() != null) {
-                                    if (output.getStatus() == 0) {
-                                        binding.shuntStatus.setText("Connected");
-                                    } else if (output.getStatus() == 1) {
-                                        binding.shuntStatus.setText("DisConnected");
-                                    } else {
-                                        binding.shuntStatus.setText("By Passed");
-                                    }
-                                }
-
-                                if (output.getLocation() != null) {
-                                    if (output.getLocation() == 1) {
-                                        binding.shuntLocation.setText("At From Node");
-                                    } else if (output.getLocation() == 2) {
-                                        binding.shuntLocation.setText("At To Node");
-                                    } else {
-                                        binding.shuntLocation.setText("At Middle Node");
-                                    }
-                                }
-
-                                if (output.getKvln() != null) {
-                                    binding.dtPrimaryTapATv.setText(output.getKvln().toString());
-                                }
-
-                                if (output.getInterruptingRatingX() != null) {
-                                    binding.ShuntInterrupting.setText(output.getInterruptingRatingX().toString());
-                                }
-
-                                if (output.getRatedKVAR() != null) {
-                                    binding.shuntRated.setText(output.getRatedKVAR().toString());
-                                }
-
-                                if (output.getLossesKW() != null) {
-                                    binding.shuntLosses.setText(output.getLossesKW().toString());
-                                }
-
-                                if (output.getDeviceStage() != null) {
-                                    binding.stageShunt.setText(output.getDeviceStage().toString());
-                                }
-
-                                if (output.getByPhase() != null) {
-                                    if (output.getByPhase() == 7) {
-                                        binding.aChkBoxs.setChecked(true);
-                                        binding.bChkBoxs.setChecked(true);
-                                        binding.cChkBoxs.setChecked(true);
-                                    } else if (output.getByPhase() == 1) {
-                                        binding.aChkBoxs.setChecked(true);
-                                        binding.bChkBoxs.setChecked(false);
-                                        binding.cChkBoxs.setChecked(false);
-                                    } else if (output.getByPhase() == 2) {
-                                        binding.bChkBoxs.setChecked(true);
-                                        binding.cChkBoxs.setChecked(false);
-                                        binding.aChkBoxs.setChecked(false);
-                                    } else if (output.getByPhase() == 3) {
-                                        binding.cChkBoxs.setChecked(true);
-                                        binding.aChkBoxs.setChecked(false);
-                                        binding.bChkBoxs.setChecked(false);
-                                    }
-                                }
-
-                                if (output.getFromNodeId() != null && !output.getFromNodeId().isEmpty() && !output.getFromNodeId().equals("null")) {
-                                    binding.idFromNodesTv.setText(output.getFromNodeId());
-                                }
-
-                                if (output.getToNodeId() != null && !output.getToNodeId().isEmpty() && !output.getToNodeId().equals("null")) {
-                                    binding.idToNodeTv.setText(output.getToNodeId());
-                                }
-
-                                if ((output.getToNodeId() != null && !output.getToNodeId().equals("null"))
-                                        || (output.getFromNodeId() != null && !output.getFromNodeId().equals("null"))) {
-                                    binding.corTypeChk.setChecked(true);
-                                } else {
-                                    binding.corTypeChk.setChecked(false);
-                                }
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        @SuppressLint("InflateParams")
-                        View layout = LayoutInflater.from(mainContext).inflate(R.layout.toast_layout, null);
-                        TextView Ok = layout.findViewById(R.id.okBtn);
-                        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-                        TextView header = layout.findViewById(R.id.headerTv);
-                        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-                        TextView description = layout.findViewById(R.id.descripTv);
-                        header.setText(response.message() + " - " + response.code());
-                        description.setText(mainContext.getString(R.string.error_msg));
-                        Toast toast = new Toast(mainContext);
-                        toast.setGravity(Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 0, 0);
-                        toast.setDuration(Toast.LENGTH_LONG);
-                        toast.setView(layout);
-                        toast.show();
-                    }
-                }
-
-                @Override
-                public void onFailure(@NonNull Call<ShuntReactorModel> call, @NonNull Throwable t) {
-                    binding.shuntReactorDialog.setVisibility(View.VISIBLE);
-                    binding.shimmerView.stopShimmer();
-                    binding.shimmerView.setVisibility(View.GONE);
-
-                    @SuppressLint("InflateParams")
-                    View layout = LayoutInflater.from(mainContext).inflate(R.layout.toast_layout, null);
-                    TextView Ok = layout.findViewById(R.id.okBtn);
-                    @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-                    TextView header = layout.findViewById(R.id.headerTv);
-                    @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-                    TextView description = layout.findViewById(R.id.descripTv);
-                    header.setText(mainContext.getString(R.string.error));
-                    description.setText(mainContext.getString(R.string.error_msg));
-                    Toast toast = new Toast(mainContext);
-                    toast.setGravity(Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 0, 0);
-                    toast.setDuration(Toast.LENGTH_LONG);
-                    toast.setView(layout);
-                    toast.show();
+        if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(getContext())) {
+            getWindInfo();
+        } else {
+            final Dialog dialog = new Dialog(getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.no_internet_dialog);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(getContext().getDrawable(R.drawable.pop_background));
+            LottieAnimationView lottieAnimationView = dialog.findViewById(R.id.animation_view);
+            Button retryBtn = dialog.findViewById(R.id.btnDialog);
+            lottieAnimationView.playAnimation();
+            retryBtn.setOnClickListener(view -> {
+                if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(getContext())) {
+                    dialog.dismiss();
+                    getWindInfo();
                 }
             });
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.setCancelable(false);
+            dialog.show();
+        }
+    }
+
+    private void getWindInfo() {
+        if (prefManager.getUserType() == null) {
+            Toast.makeText(mainContext, "UserType not found", Toast.LENGTH_SHORT).show();
+            return;
         }
 
+        jsonObject.addProperty("UserType", prefManager.getUserType());
+        jsonObject.addProperty("CYMDBNET", prefManager.getDBName());
+
+        ApiInterface apiInterface = RetrofitClient.getClient().create(ApiInterface.class);
+        Call<Wind> call = apiInterface.getWindData("Bearer " + prefManager.getAccessToken(), jsonObject);
+        call.enqueue(new Callback<Wind>() {
+            @Override
+            public void onResponse(@NonNull Call<Wind> call, @NonNull Response<Wind> response) {
+                if (response.code() == 200 && response.body() != null && response.body().getOutput() != null) {
+                    binding.winddeviceinfo.setVisibility(View.VISIBLE);
+                    Wind.Output output = response.body().getOutput();
+
+                    if (output.getSectionId() != null && !output.getSectionId().isEmpty() && !output.getSectionId().equals("null")) {
+                        binding.sectionIdEdt.setText(output.getSectionId());
+                    }
+
+                    if (output.getEquipmentId() != null && !output.getEquipmentId().isEmpty() && !output.getEquipmentId().equals("null")) {
+                        binding.shuntId.setText(output.getEquipmentId());
+                    }
+
+                    if (output.getDeviceNumber() != null && !output.getDeviceNumber().isEmpty() && !output.getDeviceNumber().equals("null")) {
+                        binding.NumShunt.setText(output.getDeviceNumber());
+                    }
+
+                    if (output.getStatus() != null) {
+                        if (output.getStatus() == 0) {
+                            binding.shuntStatus.setText("Connected");
+                        } else if (output.getStatus() == 1) {
+                            binding.shuntStatus.setText("Disconnected");
+                        } else {
+                            binding.shuntStatus.setText(String.valueOf(output.getStatus()));
+                        }
+                    }
+
+                    if (output.getLocation() != null) {
+                        if (output.getLocation() == 1) {
+                            binding.shuntLocation.setText("At From Node");
+                        } else if (output.getLocation() == 2) {
+                            binding.shuntLocation.setText("At To Node");
+                        } else {
+                            binding.shuntLocation.setText("At Middle Node");
+                        }
+                    }
+
+                    if ((output.getFromNodeId() != null && !output.getFromNodeId().isEmpty() && !output.getFromNodeId().equals("null"))
+                            || (output.getToNodeId() != null && !output.getToNodeId().isEmpty() && !output.getToNodeId().equals("null"))) {
+                        nodeInfoLayout.setVisibility(View.VISIBLE);
+                    }
+
+                    if (output.getFromNodeId() != null && !output.getFromNodeId().isEmpty() && !output.getFromNodeId().equals("null")) {
+                        idFromNodesTv.setText(output.getFromNodeId());
+                    }
+
+                    if (output.getToNodeId() != null && !output.getToNodeId().isEmpty() && !output.getToNodeId().equals("null")) {
+                        idToNodeTv.setText(output.getToNodeId());
+                    }
+
+
+                    if (output.getDeviceStage() != null) {
+                        binding.stageShunt.setText(String.valueOf(output.getDeviceStage()));
+                    }
+
+                    if (output.getWindModelId() != null) {
+                        binding.Inverter.setText(output.getWindModelId());
+                    }
+
+                    if (output.getConnectionConfiguration() != null) {
+                        binding.LoadModel.setText(String.valueOf(output.getConnectionConfiguration()));
+                    }
+
+                    if (output.getUseActivePowerControls() != null) {
+                        binding.ActiveGeneration.setText(String.valueOf(output.getUseActivePowerControls()));
+                        binding.aChksBox.setChecked(output.getUseActivePowerControls() == 1);
+                    }
+
+                    if (output.getGeneratorPowerFactorPercent() != null) {
+                        binding.PowerFactor.setText(String.valueOf(output.getGeneratorPowerFactorPercent()));
+                    } else if (output.getUseReactivePowerControls() != null) {
+                        binding.PowerFactor.setText(String.valueOf(output.getUseReactivePowerControls()));
+                    }
+
+                    if (output.getRatedPowerKw() != null) {
+                        binding.shuntLosses.setText(String.valueOf(output.getRatedPowerKw()));
+                    }
+
+                    if (output.getUseReactivePowerControls() != null) {
+                        binding.bChksBox.setChecked(output.getUseReactivePowerControls() == 1);
+                    }
+
+                    if (output.getPhase() != null) {
+                        if (output.getPhase() == 7) {
+                            binding.aChkBox.setChecked(true);
+                            binding.bChkBox.setChecked(true);
+                            binding.cChkBox.setChecked(true);
+                            binding.aChkBoxs.setChecked(true);
+                            binding.bChkBoxs.setChecked(true);
+                            binding.cChkBoxs.setChecked(true);
+                        } else if (output.getPhase() == 1) {
+                            binding.aChkBox.setChecked(true);
+                            binding.bChkBox.setChecked(false);
+                            binding.cChkBox.setChecked(false);
+                            binding.aChkBoxs.setChecked(true);
+                            binding.bChkBoxs.setChecked(false);
+                            binding.cChkBoxs.setChecked(false);
+                        } else if (output.getPhase() == 2) {
+                            binding.aChkBox.setChecked(false);
+                            binding.bChkBox.setChecked(true);
+                            binding.cChkBox.setChecked(false);
+                            binding.aChkBoxs.setChecked(false);
+                            binding.bChkBoxs.setChecked(true);
+                            binding.cChkBoxs.setChecked(false);
+                        } else if (output.getPhase() == 3) {
+                            binding.aChkBox.setChecked(false);
+                            binding.bChkBox.setChecked(false);
+                            binding.cChkBox.setChecked(true);
+                            binding.aChkBoxs.setChecked(false);
+                            binding.bChkBoxs.setChecked(false);
+                            binding.cChkBoxs.setChecked(true);
+                        }
+
+
+                    }
+                } else {
+                    Toast.makeText(mainContext, "Unable to load wind data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Wind> call, @NonNull Throwable t) {
+                Toast.makeText(mainContext, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void getCableInfo() {
@@ -833,13 +759,13 @@ public class ShuntReactorDialog extends Dialog {
                                 binding.unbalanceLineIdTv.setText(unbalanced.getOutput().getLineId());
                             }
 
-                            if (unbalanced.getOutput().getLineId() != null && !unbalanced.getOutput().getLineId().isEmpty() && !unbalanced.getOutput().getLineId().equals("null")) {
+                            /*if (unbalanced.getOutput().getLineId() != null && !unbalanced.getOutput().getLineId().isEmpty() && !unbalanced.getOutput().getLineId().equals("null")) {
                                 currentLineId = unbalanced.getOutput().getLineId();
                                 unBalanceIdList = new String[]{currentLineId};
                             } else {
                                 currentLineId = "Undefined";
                                 unBalanceIdList = new String[]{"Undefined"};
-                            }
+                            }*/
 
                             if (!unbalanced.getOutput().getFromNodeId().isEmpty() && !unbalanced.getOutput().getFromNodeId().equals("null") && unbalanced.getOutput().getFromNodeId() != null) {
                                 binding.idFromNodesTv.setText(unbalanced.getOutput().getFromNodeId());

@@ -28,13 +28,16 @@ import com.techlabs.apdcl.models.dashboard.DatabaseModel;
 import com.techlabs.apdcl.models.dashboard.NetworkIDModel;
 import com.techlabs.apdcl.models.del.DeleteSectionModel;
 import com.techlabs.apdcl.models.del.UpdateDeviceModel;
+import com.techlabs.apdcl.models.device.Battery;
 import com.techlabs.apdcl.models.device.Breaker;
 import com.techlabs.apdcl.models.device.DashboardModel;
 import com.techlabs.apdcl.models.device.Fuse;
+import com.techlabs.apdcl.models.device.PhotoVoltaic;
 import com.techlabs.apdcl.models.device.ShuntCapacitor;
 import com.techlabs.apdcl.models.device.SpotLoad;
 import com.techlabs.apdcl.models.device.Switch;
 import com.techlabs.apdcl.models.device.Transformer;
+import com.techlabs.apdcl.models.device.Wind;
 import com.techlabs.apdcl.models.loadflow.LoadFlowBoxData;
 import com.techlabs.apdcl.models.nsc.NewConnectionModel;
 import com.techlabs.apdcl.models.report.AbnormalReport;
@@ -197,4 +200,13 @@ public interface ApiInterface {
 
     @POST("LayermodelInfo/")
     Call<ShuntReactorModel> getReactorData(@Header("Authorization") String accessToken, @Body JsonObject jsonObject);
+
+    @POST("LayermodelInfo/")
+    Call<Battery> getBatteryData(@Header("Authorization") String accessToken, @Body JsonObject jsonObject);
+
+    @POST("LayermodelInfo/")
+    Call<Wind> getWindData(@Header("Authorization") String accessToken, @Body JsonObject jsonObject);
+
+    @POST("LayermodelInfo/")
+    Call<PhotoVoltaic> getPhotoVoltaicData(@Header("Authorization") String accessToken, @Body JsonObject jsonObject);
 }

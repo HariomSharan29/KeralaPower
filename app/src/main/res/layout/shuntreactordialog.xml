@@ -181,7 +181,7 @@
                         android:background="@drawable/pop_btn_background"
                         android:gravity="center"
                         android:padding="10sp"
-                        android:text="ShuntReactor"
+                        android:text="Reactor"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/color1"
+        android:icon="@drawable/rectangle"
+        android:title="@string/cable"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color2"
+        android:icon="@drawable/rectangle"
+        android:title="@string/overhaad"
+        android:iconTint="@color/blue"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color3"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color4"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color5"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color6"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color7"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color8"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color9"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color10"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color11"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color12"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color13"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color14"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color15"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+    <item
+        android:id="@+id/color16"
+        android:icon="@drawable/rectangle"
+        android:title="@string/unbalance"
+        app:showAsAction="never|withText"/>
+
+</menu>

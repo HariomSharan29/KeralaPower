@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:weightSum="13.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+                <TextView
+                    android:layout_weight="1.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="Customer"
+                    android:textColor="@color/blue"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="12sp"
+                    android:paddingRight="12sp"/>
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width = "fill_parent"
+                android:layout_height = "wrap_content">
+
+                <TextView
+                    android:layout_width = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_weight = "4"
+                    android:padding = "5dp"
+                    android:text = "Apparent Power"
+                    android:textColor="@color/blue"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/apATv"
+                    android:layout_width = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_weight = "1"
+                    android:gravity = "center"
+                    android:padding = "5dp"
+                    android:text = "0.0"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/apBTv"
+                    android:layout_width = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_weight = "1"
+                    android:gravity = "center"
+                    android:padding = "5dp"
+                    android:text = "0.0"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/apCTv"
+                    android:layout_width = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_weight = "1"
+                    android:gravity = "center"
+                    android:padding = "5dp"
+                    android:text = "0.0"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/apTotalTv"
+                    android:layout_width = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_weight = "1.2"
+                    android:gravity = "center"
+                    android:padding = "5dp"
+                    android:text = "0.0"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</RelativeLayout>

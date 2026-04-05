@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/folding_cell2"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:folding-cell="http://schemas.android.com/apk/res-auto"
+    folding-cell:backSideColor="@color/blue"
+    android:layout_margin="2dp">
+
+    <include
+        android:id="@+id/cellContentLayout"
+        layout="@layout/fault_flow_detailed_content_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="4dp"
+    android:orientation="vertical"
+    android:paddingEnd="4dp">
+
+    <LinearLayout
+        android:id="@+id/child_row_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rv_bg"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp">
+
+        <ImageView
+            android:id="@+id/arro_imageview"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:rotation="0"
+            android:src="@drawable/expand_indicater" />
+
+        <TextView
+            android:id="@+id/row_second_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:textColor="@color/blue"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/dType_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/expandable_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:paddingTop="2dp">
+
+        <com.techlabs.apdcl.Utils.custom.ItemViewHelper
+            android:id="@+id/main_recyclervie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>

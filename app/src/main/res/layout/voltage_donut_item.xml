@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="2dp">
+
+
+    <TextView
+        android:id="@+id/txtVoltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:layout_marginBottom="2dp"/>
+
+    <com.techlabs.apdcl.Utils.custom.VoltageDonutView
+        android:id="@+id/donut"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <LinearLayout
+        android:id="@+id/legendContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+</LinearLayout>

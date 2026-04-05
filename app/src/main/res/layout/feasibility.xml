@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:id="@+id/feasibility_view"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:nestedScrollingEnabled="true"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:weightSum="2.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="25dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1.33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:text="@string/dtt"
+                android:padding="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingStart="8sp"/>
+
+            <TextView
+                android:id="@+id/dt_id"
+                android:layout_weight="0.67"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:padding="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C1BCBC"/>
+
+        <LinearLayout
+            android:weightSum="2.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/applicatinid"
+                android:padding="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingStart="5sp"/>
+
+            <TextView
+                android:id="@+id/application_id"
+                android:layout_weight="0.80"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:paddingStart="5sp"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C1BCBC"/>
+
+        <LinearLayout
+            android:weightSum="2.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1.33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/feasibility"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingStart="8sp"/>
+
+            <TextView
+                android:id="@+id/feasibility"
+                android:layout_weight="0.67"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:minHeight="25dp"
+                android:paddingStart="5sp"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C1BCBC"/>
+
+        <LinearLayout
+            android:weightSum="3.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/lf_bg"
+                android:minHeight="25dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text=""
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/befores"
+                android:minHeight="25dp"
+                android:padding="5dp"
+                android:background="@drawable/lf_bg"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/afters"
+                android:minHeight="25dp"
+                android:padding="5dp"
+                android:background="@drawable/lf_bg"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C1BCBC"/>
+
+        <LinearLayout
+            android:weightSum="3.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:text="@string/vr"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingStart="8sp"/>
+
+            <TextView
+                android:id="@+id/vr"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:text=""
+                android:padding="5dp"
+                android:background="@drawable/lf_bg"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/vr_r"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:text=""
+                android:padding="5dp"
+                android:background="@drawable/lf_bg"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C1BCBC"/>
+
+        <LinearLayout
+            android:weightSum="3.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dt_load"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:padding="5dp"
+                android:text="@string/dt_loading"
+                android:textColor="@color/black"
+                android:background="@drawable/lf_bg"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingStart="8sp"/>
+
+            <TextView
+                android:id="@+id/dt_loading"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:text=""
+                android:padding="5dp"
+                android:background="@drawable/lf_bg"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/dt_Aloading"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:text=""
+                android:padding="5dp"
+                android:background="@drawable/lf_bg"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

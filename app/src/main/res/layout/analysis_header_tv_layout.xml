@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.ramotion.foldingcell.FoldingCell
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/cell_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/cell_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/blue" />
+        </FrameLayout>
+
+    </com.ramotion.foldingcell.FoldingCell>
+
+<!--    <HorizontalScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scrollbars="none">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:weightSum="10.0"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/feederTV"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Csfjfdjdfjdfjfdbdjbjfbjbjbfjbjfjfgjfgjfjj"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/sectionIdTv"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text=""-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/eqIdTv"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/eqCodeTV"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/loadingATv"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/loadingBTv"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/loadingCTv"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/vaTV"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/vbTV"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/vcTV"-->
+<!--                    android:layout_weight="1.0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Customer"-->
+<!--                    android:textColor="@color/blue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="2sp"-->
+<!--                    android:layout_marginRight="1sp"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="2dp"-->
+<!--                android:background="#cdcdcd"/>-->
+
+<!--&lt;!&ndash;            <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/recycler"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                android:visibility="gone"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width = "fill_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height = "wrap_content">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width = "0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height = "wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight = "4"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:padding = "5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text = "Apparent Power"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/blue"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/apATv"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width = "0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height = "wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight = "1"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity = "center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:padding = "5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text = "0.0"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/black"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/apBTv"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width = "0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height = "wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight = "1"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity = "center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:padding = "5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text = "0.0"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/black"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/apCTv"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width = "0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height = "wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight = "1"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity = "center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:padding = "5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text = "0.0"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/black"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/apTotalTv"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width = "0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height = "wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight = "1.2"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity = "center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:padding = "5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text = "0.0"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/black"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
+
+<!--        </LinearLayout>-->
+
+<!--    </HorizontalScrollView>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<HorizontalScrollView-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:scrollbars="none"-->
+<!--    android:layout_height="wrap_content">-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/headerValue"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:weightSum="10.0">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/feederTV"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="ANDHRI_11KV_04991"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/sectionIdTv"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="DT-9750_19545"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp"-->
+<!--            android:maxLines="12"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/eqIdTv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="NULL"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/eqCodeTV"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="EqCode"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/loadingATv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="110.0"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/loadingBTv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="110"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/loadingCTv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="110"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/vaTV"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="97.99"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/vbTV"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="97.99"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/vcTV"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1.0"-->
+<!--            android:paddingLeft="10sp"-->
+<!--            android:text="VC"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="12sp" />-->
+
+<!--    </LinearLayout>-->
+
+<!--</HorizontalScrollView>-->

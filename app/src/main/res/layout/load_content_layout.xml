@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/cell_content_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    app:contentPadding="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:weightSum="2.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/blue"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/codeTvc"
+                android:layout_weight="0.55"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Two-Winding Transformer"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:paddingLeft="10sp"/>
+
+            <TextView
+                android:id="@+id/codeSymbol"
+                android:layout_weight="1.450"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="28dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_weight="0.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:paddingLeft="5dp"
+                    android:weightSum="2.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/feederId"
+                        android:layout_weight="1.40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Network Id"
+                        android:textSize="14sp"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/feederIdTv"
+                        android:layout_weight="0.62"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/defaults"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/title_from_to_dots_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:paddingLeft="5dp"
+                    android:weightSum="2.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/sectionId"
+                        android:layout_weight="1.40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Section Id :"
+                        android:textSize="14sp"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/sectionIdTv"
+                        android:layout_weight="0.62"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/defaults"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@color/contentDividerLine" />
+
+            <LinearLayout
+                android:layout_weight="0.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:paddingLeft="5dp"
+                    android:weightSum="2.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/equipmentId"
+                        android:layout_weight="1.40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Equipment Id :"
+                        android:textSize="14sp"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/equipmentIdTv"
+                        android:layout_weight="0.62"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/defaults"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:paddingLeft="5dp"
+                    android:weightSum="2.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/code"
+                        android:layout_weight="1.40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Code : "
+                        android:textSize="14sp"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/codeTv"
+                        android:layout_weight="0.62"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/defaults"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="6.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="0.99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="VA (V)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
+                        android:paddingLeft="5dp"/>
+
+                    <TextView
+                        android:layout_weight="1.01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_weight="0.99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="VB (V)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
+                        android:paddingLeft="5dp"/>
+
+                    <TextView
+                        android:layout_weight="1.01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_weight="0.99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="VC (V)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
+                        android:paddingLeft="5dp"/>
+
+                    <TextView
+                        android:layout_weight="1.01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Adj A (kva)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Adj B (kva)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Adj C (kva)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Adj (kva)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Pf Adj A (%)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Pf Adj B (%)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Pf Adj C (%)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Pf Adj (%)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dist Adj A (KVA)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Dist Adj B (KVA)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dist Adj C (KVA)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Dist Adj (KVA)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dist PF Adj A (%)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Dist PF Adj B (%)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dist PF Adj C (%)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Dist PF Adj (%)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/viewEquipmentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/blue"
+                android:elevation="4dp"
+                android:padding="1dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contentLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="View Equipment"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

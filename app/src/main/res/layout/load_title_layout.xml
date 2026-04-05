@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cell_title_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgContent"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    app:contentPadding="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4.0"
+            android:background="@color/blue">
+
+            <TextView
+                android:id="@+id/codeTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.55"
+                android:paddingLeft="5dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="Two-Winding Transformer"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/overloadColorTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.150"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@color/blue"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/overVoltageColorTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.150"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@color/blue"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/underVoltageColorTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.150"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@color/blue"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="6dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:weightSum="2.0">
+
+                    <TextView
+                        android:id="@+id/feederId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.40"
+                        android:text="Network Id :"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/networkIdTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.62"
+                        android:text="@string/defaults"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:weightSum="2.0">
+
+                    <TextView
+                        android:id="@+id/sectionId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.40"
+                        android:text="Section Id : "
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sectionIdTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.62"
+                        android:text="@string/defaults"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:weightSum="2.0">
+
+                    <TextView
+                        android:id="@+id/equipmentId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.40"
+                        android:text="EquipmentId :"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/equipmentNoTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.62"
+                        android:text="@string/defaults"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Adj A (kva)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Adj B (kva)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Adj C (kva)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Adj (kva)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Pf Adj A (%)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Pf Adj B (%)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:weightSum="4.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:layout_weight="0.90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spot Pf Adj C (%)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.90"
+                        android:text="Spot Pf Adj (%)"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_weight="1.1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:src="@color/contentDividerLine" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

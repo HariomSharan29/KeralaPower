@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/main_layout"
+    android:visibility="gone"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="24dp"
+    android:background="@drawable/bonuspack_bubble">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title"
+                android:textColor="@color/blue"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/info_sub_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title bxgdsfesww kadebsb"
+                android:textColor="#0C0C0C"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.0">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.10"
+                    android:paddingTop="5sp"
+                    android:paddingBottom="5sp"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="7sp"
+                    android:text="Device No. : "
+                    android:textColor="@color/blue"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/networkId_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.89"
+                    android:padding="5sp"
+                    android:text="CA33279"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/id_layout"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.0">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.10"
+                    android:padding="5sp"
+                    android:text="EquipmentId"
+                    android:textColor="@color/blue"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sectionId_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.89"
+                    android:padding="5sp"
+                    android:text="CA33279"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/network_layout"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.0">
+
+                <TextView
+                    android:id="@+id/cable_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="7sp"
+                    android:paddingTop="1sp"
+                    android:paddingBottom="1sp"
+                    android:text="Network Id :"
+                    android:textColor="@color/blue"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cableId_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.89"
+                    android:padding="5sp"
+                    android:text="CA33279"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/connect_layout"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.0">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.10"
+                    android:text="ConnectKVA :-"
+                    android:paddingLeft="5sp"
+                    android:textColor="@color/blue"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ConnectKva_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.89"
+                    android:text="CA33279"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kwh_layout"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.0">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.10"
+                    android:text="KWH :- "
+                    android:paddingLeft="5sp"
+                    android:textColor="@color/blue"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/kwh_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.89"
+                    android:text="CA33279"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/moreInfo_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:paddingTop="8sp"
+                android:paddingBottom="8sp"
+                android:paddingLeft="16sp"
+                android:paddingRight="16sp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_background"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp"/>
+
+            <TextView
+                android:id="@+id/closeInfo_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Close"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:paddingTop="8sp"
+                android:paddingBottom="8sp"
+                android:paddingLeft="16sp"
+                android:paddingRight="16sp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_background"
+                android:layout_marginBottom="5sp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

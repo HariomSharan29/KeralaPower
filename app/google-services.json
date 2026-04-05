@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "156802581506",
+    "project_id": "apdcl-c96a2",
+    "storage_bucket": "apdcl-c96a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156802581506:android:8d77f699af7da3c6d9931b",
+        "android_client_info": {
+          "package_name": "com.techlabs.apdcl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEMOjdfdJG3QotX6xM-hHBG3fcUxIjhkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

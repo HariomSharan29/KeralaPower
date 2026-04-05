@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/analysis_loadflow"
+        android:title="@string/loadflow" />
+
+    <item
+        android:id="@+id/analysis_shortcircuit"
+        android:title="@string/shortcircuit" />
+
+    <item
+        android:id="@+id/analysis_loadAllocation"
+        android:title="@string/load_allocations" />
+
+
+    <item
+        android:id="@+id/feasibility_before"
+        android:title="@string/before" />
+    <item
+        android:id="@+id/feasibility_after"
+        android:title="@string/after" />
+
+
+</menu>

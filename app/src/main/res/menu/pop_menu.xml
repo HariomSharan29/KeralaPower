@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/openStreetMap_menu"
+        android:icon="@drawable/ic_openstreet"
+        android:title="@string/openstreet_map" />
+
+    <item
+        android:id="@+id/noMap_menu"
+        android:icon="@drawable/ic_no_map"
+        android:title="@string/no_map" />
+
+    <item
+        android:id="@+id/googleMap_menu"
+        android:icon="@drawable/ic_road_map"
+        android:title="@string/google_map" />
+
+    <item
+        android:id="@+id/hybridMap_menu"
+        android:icon="@drawable/ic_hybrid"
+        android:title="@string/hybrid_map" />
+
+</menu>

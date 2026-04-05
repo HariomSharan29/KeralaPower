@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:orientation="horizontal"
+        android:weightSum="2.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.20"
+            android:paddingLeft="15sp"
+            android:text="Customer Load"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgClose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.83"
+            android:src="@drawable/close_btn"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Calculation Method"
+            android:textSize="15sp"
+            android:textColor="@color/red"
+            android:layout_marginLeft="7sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:spinnerMode="dropdown"
+            style="@style/tag_spinner_style"
+            android:paddingTop="5sp"
+            android:prompt="@string/defaults" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Calculation Method"
+            android:textSize="15sp"
+            android:textColor="@color/red"
+            android:layout_marginLeft="7sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:spinnerMode="dropdown"
+            style="@style/tag_spinner_style"
+            android:paddingTop="5sp"
+            android:prompt="@string/defaults" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:weightSum="14.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8sp"
+                    android:paddingRight="8sp">
+
+                    <TextView
+                        android:layout_weight="0.99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Customer\nNumber"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:layout_weight="0.99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Customer\nType"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Locked"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Year"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="0.99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Normal\nPriority"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="0.99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Emergency\nPriority"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phase"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Actual\nKVA"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Actual\nPF"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Conn.\nKva"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="KWH"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:layout_weight="1.0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="KWH"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_weight="1.0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="KWH"
+                        android:textSize="10sp"
+                        android:textColor="@color/blue"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.DropDownActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:visibility="visible"
+            app:title="Network List"
+            app:titleTextColor="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerView"
+        app:shimmer_auto_start="true"
+        app:shimmer_direction="left_to_right"
+        app:shimmer_duration="1000"
+        app:shimmer_intensity="0.">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/dd_plc" />
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerView"
+        app:layout_constraintBottom_toTopOf="@+id/loadNetworkBtn">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textProject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/project_name"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/projectSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="@string/project"
+                    android:visibility="gone"
+                    android:inputType="textNoSuggestions"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDB"
+                    tools:ignore="RtlSymmetry" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textDB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="visible"
+
+                    android:text="@string/database_name"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/databaseSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="@string/database"
+                    android:visibility="visible"
+
+                    android:inputType="textNoSuggestions"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDB"
+                    tools:ignore="RtlSymmetry" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textReg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Region"
+                    android:visibility="visible"
+
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/databaseSpin"
+                    app:layout_constraintTop_toBottomOf="@id/databaseSpin" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/regionSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="Region"
+                    android:visibility="visible"
+
+                    android:inputType="textNoSuggestions"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textReg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textZone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Zone"
+                    android:visibility="visible"
+
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/regionSpin"
+                    app:layout_constraintTop_toBottomOf="@id/regionSpin" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/zoneSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="Zone"
+                    android:visibility="visible"
+
+                    android:inputType="textNoSuggestions"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.571"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textZone" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textCircle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Circle"
+                    android:visibility="visible"
+
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/zoneSpin"
+                    app:layout_constraintTop_toBottomOf="@id/zoneSpin" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/circleSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="Circle"
+                    android:visibility="visible"
+
+                    android:inputType="textNoSuggestions"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textCircle" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textDev"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Division"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:visibility="visible"
+
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/circleSpin"
+                    app:layout_constraintTop_toBottomOf="@id/circleSpin" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/divisionSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="Division"
+                    android:visibility="visible"
+
+                    android:inputType="textNoSuggestions"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDev" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textStn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Substation"
+                    android:visibility="visible"
+
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/divisionSpin"
+                    app:layout_constraintTop_toBottomOf="@id/divisionSpin" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/subStnSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="Substation"
+                    android:visibility="visible"
+
+                    android:inputType="textNoSuggestions"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textStn" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Feeder ID"
+
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/subStnSpin"
+                    app:layout_constraintTop_toBottomOf="@id/subStnSpin" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/feederIdSpin"
+                    style="@style/tag_spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="Feeder Id"
+                    android:inputType="textNoSuggestions"
+                    android:scrollbars="horizontal"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textId" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/loadNet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Selected Network"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/feederIdSpin"
+                    app:layout_constraintTop_toBottomOf="@id/feederIdSpin" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvLoaded"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/const_bg"
+                    android:elevation="3dp"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="2dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_layout"
+                    tools:itemCount="3" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/loadNetworkBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center"
+        android:nestedScrollingEnabled="false"
+        android:text="@string/load_network"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

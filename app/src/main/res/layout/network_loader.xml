@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/layout_bg"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cancel_bg"
+        android:orientation="horizontal"
+        android:weightSum="2.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.20"
+            android:paddingStart="6sp"
+            android:text="Select Feeder"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgClose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.83"
+            android:src="@drawable/close_btn"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+    <GridLayout
+        android:id="@+id/viewBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_layout">
+
+            <AutoCompleteTextView
+                android:id="@+id/database"
+                android:layout_width="0dp"
+                style="@style/tag_spinner_style"
+                android:layout_height="wrap_content"
+                android:hint="@string/database"
+                android:layout_columnWeight="1"
+                android:inputType="textNoSuggestions"
+                android:textSize="10sp"
+                android:ellipsize="end"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true" />
+
+            <AutoCompleteTextView
+                android:id="@+id/region"
+                style="@style/tag_spinner_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Region"
+                android:layout_columnWeight="1"
+                android:inputType="textNoSuggestions"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true" />
+
+            <AutoCompleteTextView
+                android:id="@+id/zone"
+                style="@style/tag_spinner_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Zone"
+                android:layout_columnWeight="1"
+                android:inputType="textNoSuggestions"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true" />
+
+            <AutoCompleteTextView
+                android:id="@+id/circle"
+                style="@style/tag_spinner_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Circle"
+                android:layout_columnWeight="1"
+                android:inputType="textNoSuggestions"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true" />
+
+            <AutoCompleteTextView
+                android:id="@+id/division"
+                style="@style/tag_spinner_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Division"
+                android:layout_columnWeight="1"
+                android:inputType="textNoSuggestions"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true" />
+
+            <AutoCompleteTextView
+                android:id="@+id/substn"
+                style="@style/tag_spinner_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Substation"
+                android:layout_columnWeight="1"
+                android:inputType="textNoSuggestions"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true" />
+
+            <AutoCompleteTextView
+                android:id="@+id/feederID"
+                style="@style/tag_spinner_style"
+                android:layout_width="0dp"
+                android:layout_columnWeight="2"
+                android:layout_columnSpan="2"
+                android:layout_height="wrap_content"
+                android:hint="Feeder Id"
+                android:inputType="textNoSuggestions"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true" />
+
+    </GridLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/loadNet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="3dp"
+        android:text="Selected Network"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/viewBox"
+        app:layout_constraintTop_toBottomOf="@id/viewBox" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLoaded"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/const_bg"
+        android:elevation="3dp"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="2dp"
+        app:layout_constraintTop_toBottomOf="@id/loadNet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/loadNetworkBtn"
+        tools:itemCount="3" />
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/loadNetworkBtn"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center"
+        android:text="@string/load_network"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/rvLoaded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

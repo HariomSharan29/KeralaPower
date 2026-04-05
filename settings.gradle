@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        flatDir {
+            dirs 'libs'
+        }
+        maven { url "https://maven.xyz.com" }
+        maven { url "https://jitpack.io" }
+        maven {
+            url  'https://oss.sonatype.org/content/repositories/snapshots/'
+            name 'OSS-Sonatype'
+        }
+    }
+}
+rootProject.name = "NetWork Details"
+include ':app'
+include ':treelib'

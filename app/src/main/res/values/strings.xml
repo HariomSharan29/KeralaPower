@@ -1,0 +1,418 @@
+<resources>
+    <string name="app_name">UtilityNet App</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="analysis_fragment">Analysis fragment</string>
+    <string name="profile_fragment">Profile fragment</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="error">Error!</string>
+    <string name="error_msg">There is a technical issue. Please try again later.</string>
+    <string name="need_to_access">We need to access</string>
+    <string name="get_started">LETs GET STARTED</string>
+    <string name="sms">SMS</string>
+    <string name="sms_msg">To safely verify your phone number</string>
+    <string name="location">Location</string>
+    <string name="location_msg">To provide exclusive offers to you</string>
+    <string name="contacts">CONTACTS</string>
+    <string name="contacts_msg">To improve your app experience</string>
+    <string name="storage">STORAGE</string>
+    <string name="storage_msg">To easily and seamlessly access files</string>
+    <string name="get_account">GET ACCOUNT</string>
+    <string name="get_account_msg">To safely verify your email id.</string>
+    <string name="camera">CAMERA</string>
+    <string name="camera_msg">To easily and seamlessly capture images</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="t_labs_net">UtilityNet <font color="#183883">Analysis</font></string>
+    <string name="tl_labs_net">UtilityNet Analysis</string>
+    <string name="analysis">Analysis</string>
+    <string name="a_network_analysis_android_app_using_cyme">A Network Analysis Android App</string>
+    <string name="network">Network</string>
+    <string name="load_network">Load Network</string>
+    <string name="section">Section ID</string>
+    <string name="circuit_breaker">Circuit Breaker</string>
+    <string name="phase">Phase</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="zone">Zone</string>
+    <string name="breaker">Breaker</string>
+    <string name="node">Node</string>
+    <string name="cable">Cable</string>
+    <string name="id">Id</string>
+    <string name="number">Number</string>
+    <string name="status">Status</string>
+    <string name="reversible">Reversible</string>
+    <string name="setting">Settings</string>
+    <string name="state">State</string>
+    <string name="meter_demand">Meter Demand</string>
+    <string name="type">Type</string>
+    <string name="kw_kvar">KW-Kvar</string>
+    <string name="connected">Connected</string>
+    <string name="total">Total</string>
+    <string name="shunt_capacitor">Shunt Capacitor</string>
+    <string name="fixed">Fixed</string>
+    <string name="rated_voltage">Rated Voltage</string>
+    <string name="interrupting_rating">Interrupting Rating</string>
+    <string name="configuration">Configuration</string>
+    <string name="yg">YG</string>
+    <string name="rated_power">Rated Power</string>
+    <string name="losses">Losses</string>
+    <string name="switched">Switched</string>
+    <string name="spot_load">Spot Load</string>
+    <string name="settings">Settings</string>
+    <string name="load_model">Load Model</string>
+    <string name="customer_type">Customer Type</string>
+    <string name="year">Year</string>
+    <string name="priority">Priority</string>
+    <string name="normal">Normal</string>
+    <string name="none">None</string>
+    <string name="emergency">Emergency</string>
+    <string name="load_allocation">Load Allocation</string>
+    <string name="unlocked">UnLocked</string>
+    <string name="format">Format</string>
+    <string name="kva_and_pf">KVA And PF</string>
+    <string name="apparent_power">Apparent Power</string>
+    <string name="power_factor">Power Factor</string>
+    <string name="consumption">Consumption</string>
+    <string name="connected_capacity">Connected Capacity</string>
+    <string name="customers">Customers</string>
+    <string name="sectionalizar_at_to_node">Sectionalizar- At To Node</string>
+    <string name="normal_infeed">Normal Infeed</string>
+    <string name="locked">Locked</string>
+    <string name="actuating_current">Actuating Current</string>
+    <string name="trip_settings">Trip Settings</string>
+    <string name="counts_to_lockout">Counts to lockout</string>
+    <string name="deadline_threshold">Deadline threshold</string>
+    <string name="reset_time">Reset Time</string>
+    <string name="defaults">Default</string>
+    <string name="from_nodes">From Nodes</string>
+    <string name="x">X</string>
+    <string name="to_nodes">To Nodes</string>
+    <string name="y">Y</string>
+    <string name="coord_type">Coord Type</string>
+    <string name="xy">XY</string>
+    <string name="length">Length</string>
+    <string name="setting_configuration">Setting Configuration</string>
+    <string name="cable_id">Cable ID</string>
+    <string name="nb_cables_phase">Nb Cables/Phase</string>
+    <string name="operating_condition">Operating Condition</string>
+    <string name="cond_temperature">Cond. Temperature</string>
+    <string name="overview">Overview</string>
+    <string name="cable_type">Cable Type</string>
+    <string name="conductor_material">Conductor Material</string>
+    <string name="conductor_size">Conductor Size</string>
+    <string name="insulation_type">Insulation Type</string>
+    <string name="length_id">Length Id</string>
+    <string name="equivalent_impedances">Equivalent Impedances</string>
+    <string name="positive_sequence">Positive Sequence</string>
+    <string name="zero_sequence">Zero Sequence</string>
+    <string name="line_id">Line Id</string>
+    <string name="equivalent_impedances_z_abc">Equivalent Impedances ( Z[ABC] )</string>
+    <string name="z_abc">Z[ABC] :-</string>
+    <string name="equivalent_impedances_y_abc">Equivalent Impedances ( Y[ABC] )</string>
+    <string name="y_abc">Y[ABC] :-</string>
+    <string name="distribution_transformer">Transformer</string>
+    <string name="transformer">Transformer</string>
+    <string name="nodes">Nodes</string>
+    <string name="fuse_atfrom_node">Fuse AtFromNode</string>
+    <string name="two_winding_transformer_at_to_node">Two-Winding Transformer-At To Node</string>
+    <string name="general_settings">General Settings</string>
+    <string name="primary">Primary</string>
+    <string name="at_from_node">At From Node</string>
+    <string name="fault_indicator">Fault indicator</string>
+    <string name="de_energized_tap_changer">De-energized Tap changer</string>
+    <string name="primary_tap">Primary Tap</string>
+    <string name="secondary_tap">Secondary Tap</string>
+    <string name="secondary">Secondary</string>
+    <string name="kva">kVA</string>
+    <string name="pf_percent">PF(%)</string>
+    <string name="diversity">Diversity</string>
+    <string name="cord_type">Cord Type</string>
+    <string name="fuse">Fuse</string>
+    <string name="spotload">SpotLoad</string>
+    <string name="a_b_c">A B C</string>
+    <string name="details">Details</string>
+    <string name="unbalance">UnBalance</string>
+    <string name="amacity">Amacity</string>
+    <string name="hint_search_mess">Search here</string>
+    <string name="tree_node">Tree Node</string>
+    <string name="load_flow_analysis">Load Flow Analysis</string>
+
+    <string-array name="defaults">
+        <item>Default</item>
+    </string-array>
+
+    <string name="convergence_parameters">Convergence Parameters</string>
+    <string name="limit_categories">Limit Categories</string>
+    <string name="equipment_ratings">Equipment Ratings</string>
+    <string name="protective_device_ratings">Protective Device Ratings</string>
+
+    <string name="parameter">Parameters</string>
+    <string name="networks">Network</string>
+    <string name="controls">Controls</string>
+    <string name="loading_limits">Loading Limits</string>
+    <string name="transformertapmode">Transformer Tap Operation</string>
+    <string name="load_flow">Load Flow</string>
+    <string name="ok">Ok</string>
+    <string name="save">Save</string>
+    <string name="run">Run</string>
+    <string name="reports">Reports</string>
+    <string name="input_data">Input Data</string>
+    <string name="complete_report">Complete Report</string>
+    <string name="regular_tab_operation">Regulator Tab Operation</string>
+    <string name="iterations">Iterations</string>
+    <string name="simulation_conditions">Simulation conditions</string>
+    <string name="networkid">Network ID</string>
+    <string name="more">More</string>
+    <string name="section_properties">Section Properties</string>
+    <string name="new_connection">New Connection</string>
+    <string name="logout">Logout</string>
+    <string name="expand">Expand All</string>
+    <string name="breaker_type">Breaker Type</string>
+    <string name="rated_current">Rated Current</string>
+    <string name="userdefined">UserDefined</string>
+    <string name="meter_id">Meter ID</string>
+    <string name="nominal_rating">Nominal Rating</string>
+    <string name="ampacity">Ampacity</string>
+    <string name="ampear_capacity">Ampear Capacity</string>
+    <string name="shortcircuit">ShortCircuit...</string>
+    <string name="loadflow">LoadFlow...</string>
+    <string name="load_allocations">Load Allocation...</string>
+    <string name="calculation">Calculation</string>
+    <string name="calculation_mode">Calculation Mode</string>
+    <string name="fault_location">Fault Location</string>
+    <string name="locations">Location :</string>
+    <string name="at">At :</string>
+    <string name="_1">50.0</string>
+    <string name="of_conductor_length">% of Conductor Length</string>
+    <string name="fault_type">Fault Type</string>
+    <string name="types">Type :</string>
+    <string name="add_section">Add Section</string>
+    <string name="add_device">Add Device</string>
+    <string name="meters">Meters</string>
+    <string name="A">A</string>
+    <string name="zero">0</string>
+    <string name="customer_load">Customer Load</string>
+    <string name="Load_model">Load Model</string>
+    <string name="customers_number">Customer Number</string>
+    <string name="Zero">0\n</string>
+    <string name="Connected">Connected</string>
+    <string name="customer_number">Customer Number</string>
+    <string name="cust_type">Cust. Type</string>
+    <string name="Locked">Locked</string>
+    <string name="Status">Status</string>
+    <string name="years">Year</string>
+    <string name="Normal_priority">Normal Priority</string>
+    <string name="Emerg_priority">Emerg Priority</string>
+    <string name="Actual_kva">Actual kva</string>
+    <string name="Actual_pf">Actual PF</string>
+    <string name="Conn_kva">Conn kva</string>
+    <string name="Kwh">Kwh</string>
+    <string name="Cust">Cust.#</string>
+    <string name="source">Source</string>
+    <string name="Networks">NETWORK</string>
+    <string name="sources">Source Type</string>
+    <string name="source_node">Source Node</string>
+    <string name="Name">Name</string>
+    <string name="network_type">Network Type</string>
+    <string name="proximitys">Proximity:</string>
+    <string name="Network_grouping">Network Grouping:</string>
+    <string name="area">Area</string>
+    <string name="voltage_level">Voltage Level:</string>
+    <string name="region">Region:</string>
+    <string name="travling_time">Traveling time hh:mm</string>
+    <string name="network_grouping">Network Grouping</string>
+    <string name="regions">Region</string>
+    <string name="source_type">Source Type</string>
+    <string name="zones">Zone</string>
+    <string name="coordinates">X Coordinates</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="y_coordinates">Y coordinates</string>
+    <string name="voltage_levels">Voltage Level</string>
+    <string name="xcoordinates">X coordinates</string>
+    <string name="latitudes">Latitude</string>
+    <string name="longitudes">Longitude</string>
+    <string name="source_network">Source Network</string>
+    <string name="proximity">Proximity</string>
+    <string name="device_number">Device Number :-</string>
+    <string name="short_circuit_box">Short-Circuit Box</string>
+    <string name="lll">LLL</string>
+    <string name="llg">LLG</string>
+    <string name="ll">LL</string>
+    <string name="lg">LG</string>
+    <string name="lg_min">LG min</string>
+    <string name="two_winding_transformer">Two-Winding Transformer</string>
+    <string name="load_flow_box">Load Flow Box</string>
+    <string name="equipment_id">Equipment Id :-</string>
+    <string name="v_base">V base :</string>
+    <string name="kvll">KvLL :</string>
+    <string name="kvln">KvLN :</string>
+    <string name="i_a">i(A) :</string>
+    <string name="kv_a">KVA :</string>
+    <string name="kw">KW :</string>
+    <string name="kvar">KvAr :</string>
+    <string name="collapse_all">Collapse All</string>
+    <string name="application_id">Application ID</string>
+    <string name="dt">DT</string>
+    <string name="openstreet_map">OpenStreet Map</string>
+    <string name="no_map">No Map</string>
+    <string name="google_map">Road Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="conventional">CONVENTIONAL</string>
+
+    <string-array name="short_calculation">
+        <item>Fault Flow Current and Voltage</item>
+        <item>Fault Flow Current and Voltage</item>
+    </string-array>
+
+    <string-array name="allocation_method">
+        <item>Connected Capacity(kVA)</item>
+        <item>Consumption (kwh)</item>
+        <item>REA</item>
+        <item>Actual Load(kVA)</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>kVA -PF</item>
+        <item>Amp -PF</item>
+        <item>kW -PF</item>
+        <item>kW -kvar</item>
+    </string-array>
+
+    <string-array name="actual_load">
+        <item>Actual Load (kVA)</item>
+        <item>Connected Capacity (kVA)</item>
+        <item>Consumption (kwh)</item>
+        <item>Locked Actual Load (kw)</item>
+        <item>Locked Actual Load (kVar)</item>
+        <item>Locked Connected Capacity (kVA)</item>
+        <item>Locked Consumption (kwh)</item>
+        <item>Shunt Capacitor kVar(Fixed)</item>
+        <item>Shunt Capacitor kVar(Controlled)</item>
+    </string-array>
+
+    <string name="maharashtra_state_electricity_distribution_co_ltd">Maharashtra State Electricity Distribution Co. Ltd.</string>
+    <string name="search_here">Search here</string>
+    <string name="selected_network">Selected Network</string>
+
+    <string name="overhaad">OverHaad</string>
+    <string name="view_equipment">View Equipment</string>
+    <string name="vc">VC :</string>
+    <string name="vb">VB :</string>
+    <string name="va">VA :</string>
+    <string name="loading_c">Loading C :</string>
+    <string name="loading_b">Loading B :</string>
+    <string name="loading_a">Loading A :</string>
+    <string name="code">Code :</string>
+    <string name="section_id">Section Id :</string>
+    <string name="feeder_id">Feeder Id :</string>
+    <string name="thru_power_a_kw">Thru Power A KW :</string>
+    <string name="thru_power_a_kvara">Thru Power A KVARA :</string>
+    <string name="vas">VA(%) :</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="protective_deviceid">Protective DeviceId :</string>
+    <string name="begin_sectionid">Begin SectionId :</string>
+    <string name="end_sectionid">End SectionId :</string>
+    <string name="conductorid">ConductorId :</string>
+    <string name="capacity_a">Capacity(A) :</string>
+    <string name="loading">Loading(%) :</string>
+    <string name="equipmentid_no">EquipmentId No.</string>
+    <string name="from_node">From Node :</string>
+    <string name="to_node">To Node :</string>
+    <string name="ibal_a">IBal (A) :</string>
+    <string name="iangle_o">IAngle (o) :</string>
+    <string name="olcpercentovl">olcPercentOvl</string>
+    <string name="_11_0">11.0</string>
+    <string name="fromnodeid">fromNodeId :</string>
+    <string name="tonodeid">toNodeId :</string>
+    <string name="total_thru_power_mva">Total Thru Power(MVA)</string>
+    <string name="_400_0">400.0</string>
+    <string name="node_id">Node ID :</string>
+    <string name="kvln_kvln">KVLN (KVLN) :</string>
+    <string name="lll_a">LLL (A)</string>
+    <string name="lll_kmax_a">LLL Kmax (A)</string>
+    <string name="lll_kmax_z_a">LLL Kmax Z (A)</string>
+    <string name="lll_kmin_a">LLL Kmin (A)</string>
+    <string name="lll_kmin_z_a">LLL Kmin Z (A) :</string>
+    <string name="llg_a">LLG (A) :</string>
+    <string name="llg_kmax_a">LLG Kmax (A) :</string>
+    <string name="llg_kmin_a">LLG Kmin (A) :</string>
+    <string name="ll_a">LL (A) :</string>
+    <string name="ll_min_a">LL Min (A) :</string>
+    <string name="ll_kmax_a">LL Kmax (A) :</string>
+    <string name="ll_kmax_z_a">LL Kmax Z (A) :</string>
+    <string name="ll_kmin_a">LL Kmin (A) :</string>
+    <string name="ll_kmin_z_a">LL Kmin Z (A) :</string>
+    <string name="lg_max_a">LG Max (A) :</string>
+    <string name="lg_kmax_a">LG Kmax (A) :</string>
+    <string name="lg_kmax_z_a">LG Kmax Z (A) :</string>
+    <string name="lg_kmin_a">LG Kmin (A) :</string>
+    <string name="lg_kmin_z_a">LG Kmin Z (A) :</string>
+    <string name="total_distance_m">Total Distance (m) :</string>
+    <string name="voltage">Voltage</string>
+    <string name="tolerance">Tolerance</string>
+    <string name="_0_01_v">0.01 %v</string>
+    <string name="_60">60</string>
+    <string name="ambient_temperature">Ambient Temperature</string>
+    <string name="_6_25">6 : 25</string>
+    <string name="time">Time</string>
+    <string name="load_scaling_factor">Load Scaling Factor</string>
+    <string name="p">P :</string>
+    <string name="_100">100</string>
+    <string name="q">Q :</string>
+    <string name="substation_name">Substation Name :</string>
+    <string name="substation_id">Substation Id :</string>
+    <string name="subdivision">Subdivision :</string>
+    <string name="division">Division :</string>
+    <string name="circle">Circle :</string>
+    <string name="service_cable_length">Service Cable Length :</string>
+    <string name="sanc_category">Sanc Category :</string>
+    <string name="select_the_feeder">Select the feeder</string>
+    <string name="default_color">Default Color</string>
+    <string name="layer_color">Layer Color</string>
+    <string name="phase_color">Phase Color</string>
+    <string name="system_color">System Voltage</string>
+    <string name="cols"> <font color="#183883" /></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="undefined">UNDEFINED</string>
+    <string name="database_name">Database Name</string>
+    <string name="database">Database</string>
+    <string name="project_name">Project Name</string>
+    <string name="project">Project</string>
+    <string name="after">After (LoadFlow)</string>
+    <string name="before">Before (LoadFlow)</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="seach_here">Seach here..</string>
+    <string name="dtt">Dt</string>
+    <string name="applicatinid">Application id</string>
+    <string name="feasibility">Feasibility</string>
+    <string name="befores">Before</string>
+    <string name="vr">%VR</string>
+    <string name="dt_loading">DT Loading</string>
+    <string name="afters">After</string>
+    <string name="recloser">Recloser</string>
+    <string name="search">Search</string>
+
+    <string name="contact_info">Contact Info</string>
+
+    <string-array name="status">
+        <item>Connected</item>
+        <item>DisConnected</item>
+    </string-array>
+
+    <string-array name="custType">
+        <item>COMMERCIAL</item>
+    </string-array>
+
+    <string name="utilitynet_app">
+    <font color="#d1261e">UtilityNet</font> <font color="#183883">App</font>
+</string>
+
+    <string name="no_internet_connection">No internet connection. Please try again later.</string>
+
+
+</resources>

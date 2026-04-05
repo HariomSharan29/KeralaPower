@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal|vertical">
+
+            <TableLayout
+                android:id="@+id/table_heading_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/customerNumber"
+                        android:layout_width="150dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/table_content_cell_bg"
+                        android:text="@string/customer_number"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/cust_type_spinnerBar"
+                        style="@style/tag_spinner_style"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="1"
+                        android:entries="@array/custType"
+                        android:prompt="@string/defaults"
+                        android:spinnerMode="dropdown" />
+
+                    <Spinner
+                        android:id="@+id/statusSpinnerBar"
+                        style="@style/tag_spinner_style"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:entries="@array/defaults"
+                        android:prompt="@string/defaults"
+                        android:spinnerMode="dropdown" />
+
+                    <TextView
+                        android:id="@+id/Phase"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:background="@drawable/table_content_cell_bg"
+                        android:text="@string/a_b_c"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/actualKva"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:background="@drawable/table_content_cell_bg"
+                        android:text="0.0"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/actualPf"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:background="@drawable/table_content_cell_bg"
+                        android:text="10"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/connectedKva"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:background="@drawable/table_content_cell_bg"
+                        android:text="0.0"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/custCount"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:background="@drawable/table_content_cell_bg"
+                        android:text="0.0"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:visibility="gone">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="14dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="12dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:weightSum="2.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/feeder1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <CheckBox
+                    android:id="@+id/feeder24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:paddingLeft="8sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="3sp"
+                    android:textColor="@color/black"
+                    android:text="33kV GIS Substation at Tongi Super Grid"/>
+
+                <!--            <CheckBox-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:enabled="false"-->
+                <!--                android:paddingLeft="8sp"-->
+                <!--                android:layout_marginLeft="5sp"-->
+                <!--                android:layout_marginRight="3sp"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:text="33kV GIS Substation at Tongi Super Grid"/>-->
+
+                <!--            <CheckBox-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:enabled="false"-->
+                <!--                android:paddingLeft="8sp"-->
+                <!--                android:layout_marginLeft="5sp"-->
+                <!--                android:layout_marginRight="3sp"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:text="33kV GIS Substation at Tongi Super Grid"/>-->
+
+                <!--            <CheckBox-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:enabled="false"-->
+                <!--                android:paddingLeft="8sp"-->
+                <!--                android:layout_marginLeft="5sp"-->
+                <!--                android:layout_marginRight="3sp"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:text="33kV GIS Substation at Tongi Super Grid"/>-->
+
+                <!--            <CheckBox-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:enabled="false"-->
+                <!--                android:paddingLeft="8sp"-->
+                <!--                android:layout_marginLeft="5sp"-->
+                <!--                android:layout_marginRight="3sp"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:text="33kV GIS Substation at Tongi Super Grid"/>-->
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

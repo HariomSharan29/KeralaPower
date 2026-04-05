@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="teal">#13cfbe</color>
+
+    <color name="black">#FF000000</color>
+    <color name="fl_btn_background">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#d1261e</color>
+    <color name="blue">#183883</color>
+    <color name="lineIndicator">#E6C0C0C0</color>
+    <color name="log">#E9E8E8</color>
+    <color name="green">#14C61B</color>
+    <color name="bgBackSideColor">#f4f0ff</color>
+    <color name="bg">#cdcdcd</color>
+
+    <color name="breaker_color">#F0C2C2</color>
+    <color name="Sectionaliazar_color">#EB6666</color>
+    <color name="transfer_color">#101010</color>
+    <color name="fuse_color">#67ABE1</color>
+    <color name="switch_color">#D1C02A</color>
+    <color name="capacitor_color">#EA7854</color>
+    <color name="spot_load_color">#420602</color>
+
+    <color name="background">#dddddd</color>
+    <color name="purple">#149BD8</color>
+    <color name="marker_background">#d8cfd0</color>
+
+    //Folding cell color
+    <color name="colorPrimary">#594691</color>
+    <color name="colorPrimaryDark">#3e2d70</color>
+    <color name="bgTitleLeft">#594691</color>
+    <color name="bgTitleRight">#ffffff</color>
+    <color name="bgContentTop">#594691</color>
+    <color name="bgContent">#ffffff</color>
+    <color name="contentDividerLine">#e0e0e0</color>
+    <color name="contentBadgeTitle">#a9a9a9</color>
+    <color name="titleBadgeTitle">#adafb1</color>
+    <color name="titleBadgeText">#adafb1</color>
+    <color name="mainTextColor">#343d43</color>
+    <color name="btnRequest">#ffbf12</color>
+    <color name="white2">#FFFFFF</color>
+
+    <color name="black_overlay">#66000000</color>
+    //Pie chart color--------
+    <color name="sub_station">#4d96ff</color>
+    <color name="circle">#ccad30</color>
+    <color name="division">#6bcb77</color>
+    <color name="feeder">#a66dd4</color>
+    <color name="regions">#ff6b6b</color>
+    <color name="zone">#ff9800</color>
+
+    <color name="feeder_11">#1E88E5</color>
+    <color name="feeder_33">#43A047</color>
+    <color name="feeder_default">#1565C0</color>
+
+    <color name="pss_33">#FB8C00</color>
+    <color name="pss">#f25b1f</color>
+    <color name="pss_132">#E53935</color>
+    <color name="pss_default">#8E24AA</color>
+
+</resources>

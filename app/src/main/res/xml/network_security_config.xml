@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">techlabsforce.in</domain>
+        <trust-anchors>
+            <certificates src="@raw/ssl" />
+            <pin-set expiration="2026-08-31">
+                <pin digest="SHA-256">41b044ea46d7367f9a20fe768026633a8f618d6f8c780e06c191796e1f1acbd1</pin>
+            </pin-set>
+        </trust-anchors>
+    </domain-config>
+</network-security-config>-->
+
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

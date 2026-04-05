@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.TreeActivity"
+    android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/mToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:title="Network List"
+                app:titleTextColor="@color/white"
+                android:visibility="visible"/>
+
+            <!--<AutoCompleteTextView
+                android:id="@+id/autoComplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/search_box_background"
+                android:drawableLeft="@drawable/ic_baseline_search_24"
+                android:hint="Search here"
+                android:inputType="text"
+                android:paddingLeft="5sp"
+                android:paddingTop="8sp"
+                android:paddingRight="5sp"
+                android:paddingBottom="8sp"
+                android:singleLine="true"
+                android:visibility="gone" />-->
+
+            <SearchView
+                android:id="@+id/autoComplete"
+                style="@style/AppSearchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/search_box_background"
+                android:closeIcon="@drawable/ic_clear"
+                android:iconifiedByDefault="false"
+                android:queryHint="@string/hint_search_mess"
+                android:searchHintIcon="@color/blue"
+                android:searchIcon="@drawable/ic_search"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+
+                    <include layout="@layout/data_placeholder_layout" />
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/search_layout"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/load_network_fabBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10sp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center"
+        android:nestedScrollingEnabled="false"
+        android:text="@string/load_network"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:paddingTop="12sp"
+        android:paddingBottom="12sp"
+        android:paddingLeft="5sp"
+        android:paddingRight="5sp"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

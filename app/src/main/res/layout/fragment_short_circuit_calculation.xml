@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.ShortCircuitCalculation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/calculation_mode"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            android:layout_marginStart="5sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F67C7C"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="5sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/calculation"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="5sp"
+            android:paddingBottom="2sp"
+            android:paddingTop="2sp"/>
+
+        <Spinner
+            android:id="@+id/calculationSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:spinnerMode="dropdown"
+            style="@style/tag_spinner_style"
+            android:entries="@array/short_calculation"
+            android:prompt="@string/defaults" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/fault_location"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            android:layout_marginStart="7sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F67C7C"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="5sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2.0"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="5sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.50"
+                android:padding="5sp"
+                android:text="@string/locations"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/locationSpinner"
+                style="@style/tag_spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.89"
+                android:gravity="center_vertical"
+                android:paddingTop="5sp"
+                android:prompt="@string/defaults"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/typeSpinner"
+            style="@style/tag_spinner_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.89"
+            android:gravity="center_vertical"
+            android:paddingTop="5sp"
+            android:prompt="@string/defaults"
+            android:spinnerMode="dropdown" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3.0"
+            android:layout_marginStart="5sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.30"
+                android:padding="5sp"
+                android:text="@string/at"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/nbCablePhaseEdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.89"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:inputType="numberDecimal"
+                android:text="@string/_1"
+                android:textColor="@color/black"
+                android:background="@drawable/edt_txt_background"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:layout_marginStart="6dp"
+                android:paddingStart="5sp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.89"
+                android:padding="5sp"
+                android:text="@string/of_conductor_length"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/fault_type"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            android:layout_marginStart="7sp"
+            android:textStyle="bold"
+            android:paddingBottom="3sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F67C7C"
+            android:layout_marginStart="5sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2.0"
+            android:paddingTop="4sp"
+            android:layout_marginStart="5sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.50"
+                android:padding="5sp"
+                android:text="@string/types"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/faultTypeSpinner"
+                style="@style/tag_spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.89"
+                android:gravity="center_vertical"
+                android:paddingTop="5sp"
+                android:prompt="@string/defaults"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#cdcdcd"
+            android:layout_marginStart="5sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2.0"
+            android:paddingTop="4sp"
+            android:layout_marginStart="5sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.50"
+                android:padding="5sp"
+                android:text="@string/phase"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/phaseSpinner"
+                style="@style/tag_spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.89"
+                android:gravity="center_vertical"
+                android:paddingTop="5sp"
+                android:prompt="@string/defaults"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+<!--
+        <LinearLayout
+            android:weightSum="3.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="7sp"
+            android:layout_marginRight="7sp"
+            android:gravity="center"
+            android:layout_marginTop="5sp">
+
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/saveBtn"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textAllCaps="false"
+                android:layout_marginStart="5sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:paddingTop="8sp"
+                android:paddingBottom="8sp"/>
+
+            <TextView
+                android:id="@+id/cancelBtn"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/custom_btn_blue"
+                android:paddingTop="8sp"
+                android:paddingBottom="8sp"
+                android:layout_marginStart="7sp" />
+
+            <TextView
+                android:id="@+id/okBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7sp"
+                android:layout_marginRight="7sp"
+                android:layout_weight="1.10"
+                android:background="@drawable/custom_btn_blue"
+                android:gravity="center"
+                android:paddingTop="8sp"
+                android:paddingBottom="8sp"
+                android:text="@string/run"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:visibility="gone"
+                android:layout_weight="1.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ok"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textAllCaps="false"
+                android:layout_marginStart="5sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@drawable/load_flow_btn_background"
+                android:paddingTop="8sp"
+                android:paddingBottom="8sp"/>
+
+        </LinearLayout>
+-->
+
+    </LinearLayout>
+
+</FrameLayout>

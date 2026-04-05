@@ -12,11 +12,11 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.JsonObject;
 import com.techlabs.apdcl.R;
-import com.techlabs.apdcl.databinding.PhotoLayoutSnippetBinding;
+import com.techlabs.apdcl.databinding.WindDeviceSnippetBinding;
 
 import java.util.Objects;
 
-public class PhotoVoltaicSnippet extends Dialog {
+public class WindSnippet extends Dialog {
 
     private final Context mainContext;
     private final JsonObject jsonObject;
@@ -25,9 +25,9 @@ public class PhotoVoltaicSnippet extends Dialog {
     private final String equipmentId;
     private final String networkId;
     private final String deviceType;
-    private PhotoLayoutSnippetBinding binding;
+    private WindDeviceSnippetBinding binding;
 
-    public PhotoVoltaicSnippet(@NonNull Context context, String sectionID, String deviceNumber, String equipmentId, String networkId, String deviceType, JsonObject jsonObject) {
+    public WindSnippet(@NonNull Context context, String sectionID, String deviceNumber, String equipmentId, String networkId, String deviceType, JsonObject jsonObject) {
         super(context);
         this.mainContext = context;
         this.jsonObject = jsonObject;
@@ -42,14 +42,14 @@ public class PhotoVoltaicSnippet extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = PhotoLayoutSnippetBinding.inflate(getLayoutInflater());
+        binding = WindDeviceSnippetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         View root = Objects.requireNonNull(getWindow()).getDecorView().getRootView();
         root.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         root.setBackgroundResource(R.drawable.pop_background);
 
-        binding.featuresTv.setText("Photovoltaic");
+        binding.featuresTv.setText("Wind");
         binding.cableTV.setText("Device No.");
         binding.lengthTV.setText("Equip ID");
         binding.networkId.setText(networkId != null ? networkId : "");
@@ -61,10 +61,7 @@ public class PhotoVoltaicSnippet extends Dialog {
         binding.moreBtn.setOnClickListener(v -> {
             jsonObject.addProperty("DeviceNumber", deviceNumber);
             jsonObject.addProperty("DeviceType", deviceType);
-            jsonObject.addProperty("SectionId", sectionID);
-            jsonObject.addProperty("NetworkId", networkId);
-            jsonObject.addProperty("EquipmentId", equipmentId);
-            PhotoVoltaicSystemDialog dialog = new PhotoVoltaicSystemDialog(mainContext, jsonObject);
+            WindDeviceInfoDialog dialog = new WindDeviceInfoDialog(mainContext, jsonObject);
             dialog.show();
         });
     }

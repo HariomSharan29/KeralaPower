@@ -117,7 +117,9 @@ import com.techlabs.apdcl.models.zoom.ZoomToLayer;
 import com.techlabs.apdcl.retrofit.ApiInterface;
 import com.techlabs.apdcl.retrofit.RetrofitClient;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.BreakerSnippet;
+import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.BatterySnippet;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.FuseSnippet;
+import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.PhotoVoltaicSnippet;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.RecloserSnippet;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.SectionLizerMoreInfo;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.ShuntCapacitorSnippet;
@@ -126,6 +128,7 @@ import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.SourceDialog;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.SpotLoadSnippet;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.SwitchSnippet;
 import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.TransformerSnippet;
+import com.techlabs.apdcl.view.LayerInfo.DeviceInfo.WindSnippet;
 import com.techlabs.apdcl.view.LayerInfo.LineInfo.CableSnippet;
 import com.techlabs.apdcl.view.LayerInfo.LineInfo.OverheadSnippet;
 import com.techlabs.apdcl.view.LayerInfo.LineInfo.UnbalanceSnippet;
@@ -3053,6 +3056,10 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
+                if (ReactorOverLay != null && !binding.map.getOverlays().contains(ReactorOverLay)) {
+                    binding.map.getOverlayManager().add(ReactorOverLay);
+                }
+
                 if (CircuitBreakerOverLay != null && !binding.map.getOverlays().contains(CircuitBreakerOverLay)) {
                     binding.map.getOverlayManager().add(CircuitBreakerOverLay);
                 }
@@ -3103,10 +3110,6 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
 
                 if (BatteryOverLay != null && !binding.map.getOverlays().contains(BatteryOverLay)) {
                     binding.map.getOverlayManager().add(BatteryOverLay);
-                }
-
-                if (ReactorOverLay != null && !binding.map.getOverlays().contains(ReactorOverLay)) {
-                    binding.map.getOverlayManager().add(ReactorOverLay);
                 }
             }
         });
@@ -3993,7 +3996,7 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
                         if (!object.getJSONObject("Reactor").getJSONArray("features").toString().equals("[]")) {
                             if (ReactorKml != null) {
                                 ReactorKml.parseGeoJSON(object.getJSONObject("Reactor").toString());
-                                KmlFeature.Styler styler = new ReactorKmlStyler(Color.BLACK, binding.map);
+                                KmlFeature.Styler styler = new ShuntReactorKmlStyler(Color.BLACK, binding.map);
                                 FolderOverlay folderOverlay = (FolderOverlay) ReactorKml.mKmlRoot.buildOverlay(binding.map, null, styler, ReactorKml);
                                 ReactorOverLay.add(folderOverlay);
                                 for (int i = 0; i < continentList.size(); i++) {
@@ -4008,7 +4011,7 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
                             } else {
                                 ReactorKml = new KmlDocument();
                                 ReactorKml.parseGeoJSON(object.getJSONObject("Reactor").toString());
-                                KmlFeature.Styler styler = new PhotoVoltaicKmlStyler(Color.BLACK, binding.map);
+                                KmlFeature.Styler styler = new ShuntReactorKmlStyler(Color.BLACK, binding.map);
                                 ReactorOverLay = (FolderOverlay) ReactorKml.mKmlRoot.buildOverlay(binding.map, null, styler, ReactorKml);
 
                                 ArrayList<DType> list = new ArrayList<>();
@@ -9655,157 +9658,7 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
         }
     }
 
-    public class ShuntReactorKmlStyler implements KmlFeature.Styler {
 
-        private int mColor;
-        private MapView mapView;
-
-        public ShuntReactorKmlStyler(int mColor, MapView mapView) {
-            this.mColor = mColor;
-            this.mapView = mapView;
-        }
-
-        @Override
-        public void onPoint(Marker marker, KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
-            try {
-                int i = kmlPlacemark.mGeometry.mCoordinates.size() - 1;
-                GeoPoint geoPoint = new GeoPoint(kmlPoint.mCoordinates.get(i).getLatitude(), kmlPoint.mCoordinates.get(i).getLongitude());
-                marker.setPosition(geoPoint);
-                marker.setRelatedObject(kmlPlacemark);
-                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
-
-                shuntReactorSectionId.put(kmlPlacemark.getExtendedData("DeviceNumber"), marker);
-                shuntReactorList.add(marker);
-
-                Bitmap reactorBitmap = OTFToBitmapConverter.convertOTFToBitmap(MapActivity.this, "SR", 65f, Color.BLACK);
-
-                int paddingLeft = 0;
-                int paddingTop = 0;
-                int paddingRight = 0;
-                int paddingBottom = 20;
-
-                int newWidth = reactorBitmap.getWidth() + paddingLeft + paddingRight;
-                int newHeight = reactorBitmap.getHeight() + paddingTop + paddingBottom;
-
-                Bitmap paddedBitmap = Bitmap.createBitmap(newWidth, newHeight, reactorBitmap.getConfig());
-                Canvas canvas = new Canvas(paddedBitmap);
-                canvas.drawBitmap(reactorBitmap, paddingLeft, paddingTop, null);
-
-                marker.setIcon(new BitmapDrawable(
-                        mapView.getContext().getResources(),
-                        addPaddingToBitmap(changeBitmapColor(paddedBitmap, Color.BLACK), 0, 10)
-                ));
-
-                marker.setRotation((float) ResponseDataUtils.CalculateAng(
-                        Double.parseDouble(kmlPlacemark.getExtendedData("FromNode_Y_l")),
-                        Double.parseDouble(kmlPlacemark.getExtendedData("ToNode_Y_l")),
-                        Double.parseDouble(kmlPlacemark.getExtendedData("FromNode_X_l")),
-                        Double.parseDouble(kmlPlacemark.getExtendedData("ToNode_X_l"))
-                ));
-
-                marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker, MapView mapView) {
-
-                        networkId = kmlPlacemark.getExtendedData("NetworkId");
-                        nodeId = kmlPlacemark.getExtendedData("ToNodeId");
-
-                        if (prefManager.getUserType().contains("Edit")) {
-                            DelDeviceNumber = kmlPlacemark.getExtendedData("DeviceNumber");
-                            DelDevice.put(kmlPlacemark.getExtendedData("DeviceNumber"), marker);
-                        }
-
-                        if (Config.isLoadFlow) {
-                            highlightLoadFlowDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
-                            LoadFlowBox loadFlowBox = new LoadFlowBox(mapView.getContext(), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"), loadFlowList, kmlPlacemark.getExtendedData("EquipmentId"));
-                            loadFragment(loadFlowBox, "loadFlowBoxTag");
-                            if (isTracing) {
-                                ReSetColor();
-                            }
-                        } else if (Config.isShortCircuit) {
-                            highlightShortCircuitDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
-                            ShortCircuitBox shortCircuitBox = new ShortCircuitBox(mapView.getContext(), shortCircuitList, kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"));
-                            loadFragment(shortCircuitBox, "shortCircuitBoxTag");
-                            if (isTracing) {
-                                ReSetColor();
-                            }
-                        } else if (Config.isLoadAllocation) {
-                            highlightDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
-                            JsonObject jsonObject = new JsonObject();
-                            jsonObject.addProperty("DeviceNumber", kmlPlacemark.getExtendedData("DeviceNumber"));
-                            jsonObject.addProperty("DeviceType", kmlPlacemark.getExtendedData("DeviceType"));
-                            ShuntReactorSnippet shuntReactorSnippet = new ShuntReactorSnippet(MapActivity.this, kmlPlacemark.getExtendedData("SectionId"), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("EquipmentId"), kmlPlacemark.getExtendedData("NetworkId"), kmlPlacemark.getExtendedData("DeviceType"), jsonObject);
-                            shuntReactorSnippet.show();
-                            if (isTracing) {
-                                ReSetColor();
-                            }
-                        } else {
-                            highlightDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
-                            JsonObject jsonObject = new JsonObject();
-                            jsonObject.addProperty("DeviceNumber", kmlPlacemark.getExtendedData("DeviceNumber"));
-                            jsonObject.addProperty("DeviceType", kmlPlacemark.getExtendedData("DeviceType"));
-                            ShuntReactorSnippet shuntReactorSnippet = new ShuntReactorSnippet(MapActivity.this, kmlPlacemark.getExtendedData("SectionId"), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("EquipmentId"), kmlPlacemark.getExtendedData("NetworkId"), kmlPlacemark.getExtendedData("DeviceType"), jsonObject);
-                            shuntReactorSnippet.show();
-                            if (isTracing) {
-                                ReSetColor();
-                            }
-                        }
-
-                        binding.map.invalidate();
-                        return true;
-                    }
-                });
-
-                if (CaSectionList.contains(kmlPlacemark.getExtendedData("SectionId"))) {
-                    int CaSize = CaObject.getJSONArray("features").length();
-                    for (int j = 0; j < CaSize; j++) {
-                        if (CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && kmlPlacemark.getExtendedData("Location").equals("2")) {
-                            String fromY = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(0));
-                            String fromX = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(1));
-                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(fromX), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_X_l")), Double.valueOf(fromY), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_Y_l"))));
-                        } else if (CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && !kmlPlacemark.getExtendedData("Location").equals("2")) {
-                            String toY = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(0));
-                            String toX = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(1));
-                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(kmlPlacemark.getExtendedData("FromNode_X_l")), Double.valueOf(toX), Double.valueOf(kmlPlacemark.getExtendedData("FromNode_Y_l")), Double.valueOf(toY)));
-                        }
-                    }
-                } else if (OhSectionList.contains(kmlPlacemark.getExtendedData("SectionId"))) {
-                    int OhSize = OhObject.getJSONArray("features").length();
-                    for (int k = 0; k < OhSize; k++) {
-                        if (OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && kmlPlacemark.getExtendedData("Location").equals("2")) {
-                            String fromY = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(0));
-                            String fromX = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(1));
-                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(fromX), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_X_l")), Double.valueOf(fromY), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_Y_l"))));
-                        } else if (OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && !kmlPlacemark.getExtendedData("Location").equals("2")) {
-                            String toX = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(1));
-                            String toY = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(0));
-                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(kmlPlacemark.getExtendedData("FromNode_X_l")), Double.valueOf(toX), Double.valueOf(kmlPlacemark.getExtendedData("FromNode_Y_l")), Double.valueOf(toY)));
-                        }
-                    }
-                }
-
-            } catch (Exception e) {
-                ErrorPdfLogger.logCrash(MapActivity.this, e);
-                Log.d("Main", e.getMessage());
-            }
-        }
-
-        @Override
-        public void onLineString(Polyline polyline, KmlPlacemark kmlPlacemark, KmlLineString kmlLineString) {
-        }
-
-        @Override
-        public void onPolygon(Polygon polygon, KmlPlacemark kmlPlacemark, KmlPolygon kmlPolygon) {
-        }
-
-        @Override
-        public void onTrack(Polyline polyline, KmlPlacemark kmlPlacemark, KmlTrack kmlTrack) {
-        }
-
-        @Override
-        public void onFeature(Overlay overlay, KmlFeature kmlFeature) {
-        }
-    }
 
     public class ReclouserKmlStyler implements KmlFeature.Styler {
 
@@ -10374,7 +10227,56 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
         @SuppressLint("UseCompatLoadingForDrawables")
         @Override
         public void onPoint(Marker marker, KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
+            try {
+                int i = kmlPlacemark.mGeometry.mCoordinates.size() - 1;
+                GeoPoint geoPoint = new GeoPoint(kmlPoint.mCoordinates.get(i).getLatitude(), kmlPoint.mCoordinates.get(i).getLongitude());
+                marker.setPosition(geoPoint);
+                marker.setRelatedObject(kmlPlacemark);
+                marker.setIcon(new BitmapDrawable(mapView.getContext().getResources(),
+                        addPaddingToBitmap(changeBgTransparentBitmapColor(BitmapImg.Battery(), Color.BLACK), 0, 35)));
 
+                marker.setOnMarkerClickListener((clickedMarker, clickedMapView) -> {
+                    networkId = kmlPlacemark.getExtendedData("NetworkId");
+                    nodeId = kmlPlacemark.getExtendedData("ToNodeId");
+
+                    if (prefManager.getUserType().contains("Edit")) {
+                        DelDeviceNumber = kmlPlacemark.getExtendedData("DeviceNumber");
+                        DelDevice.put(kmlPlacemark.getExtendedData("DeviceNumber"), clickedMarker);
+                    }
+
+                    if (Config.isLoadFlow) {
+                        highlightLoadFlowDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        LoadFlowBox loadFlowBox = new LoadFlowBox(clickedMapView.getContext(), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"), loadFlowList, "");
+                        loadFragment(loadFlowBox, "loadFlowBoxTag");
+                    } else if (Config.isShortCircuit) {
+                        highlightShortCircuitDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        ShortCircuitBox shortCircuitBox = new ShortCircuitBox(clickedMapView.getContext(), shortCircuitList, kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"));
+                        loadFragment(shortCircuitBox, "shortCircuitBoxTag");
+                    } else {
+                        highlightDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        JsonObject jsonObject = new JsonObject();
+                        jsonObject.addProperty("DeviceNumber", kmlPlacemark.getExtendedData("DeviceNumber"));
+                        jsonObject.addProperty("DeviceType", kmlPlacemark.getExtendedData("DeviceType"));
+                        BatterySnippet batterySnippet = new BatterySnippet(MapActivity.this,
+                                kmlPlacemark.getExtendedData("SectionId"),
+                                kmlPlacemark.getExtendedData("DeviceNumber"),
+                                kmlPlacemark.getExtendedData("EquipmentId"),
+                                kmlPlacemark.getExtendedData("NetworkId"),
+                                kmlPlacemark.getExtendedData("DeviceType"),
+                                jsonObject);
+                        batterySnippet.show();
+                    }
+
+                    if (isTracing) {
+                        ReSetColor();
+                    }
+                    binding.map.invalidate();
+                    return true;
+                });
+            } catch (Exception e) {
+                ErrorPdfLogger.logCrash(MapActivity.this, e);
+                Log.d("Exception", e.getLocalizedMessage());
+            }
         }
 
         @Override
@@ -10411,7 +10313,53 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
         @Override
         public void onPoint(Marker marker, KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
             try {
+                int i = kmlPlacemark.mGeometry.mCoordinates.size() - 1;
+                GeoPoint geoPoint = new GeoPoint(kmlPoint.mCoordinates.get(i).getLatitude(), kmlPoint.mCoordinates.get(i).getLongitude());
+                marker.setPosition(geoPoint);
+                marker.setRelatedObject(kmlPlacemark);
+                marker.setIcon(new BitmapDrawable(mapView.getContext().getResources(),
+                        addPaddingToBitmap(changeBgTransparentBitmapColor(BitmapImg.PhotoVoltaic(), Color.BLACK), 0, 35)));
 
+                marker.setOnMarkerClickListener((clickedMarker, clickedMapView) -> {
+                    networkId = kmlPlacemark.getExtendedData("NetworkId");
+                    nodeId = kmlPlacemark.getExtendedData("ToNodeId");
+
+                    if (prefManager.getUserType().contains("Edit")) {
+                        DelDeviceNumber = kmlPlacemark.getExtendedData("DeviceNumber");
+                        DelDevice.put(kmlPlacemark.getExtendedData("DeviceNumber"), clickedMarker);
+                    }
+
+                    if (Config.isLoadFlow) {
+                        highlightLoadFlowDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        LoadFlowBox loadFlowBox = new LoadFlowBox(clickedMapView.getContext(), kmlPlacemark.getExtendedData("DeviceNumber"),
+                                kmlPlacemark.getExtendedData("DeviceType"), loadFlowList, "");
+                        loadFragment(loadFlowBox, "loadFlowBoxTag");
+                    } else if (Config.isShortCircuit) {
+                        highlightShortCircuitDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        ShortCircuitBox shortCircuitBox = new ShortCircuitBox(clickedMapView.getContext(), shortCircuitList,
+                                kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"));
+                        loadFragment(shortCircuitBox, "shortCircuitBoxTag");
+                    } else {
+                        highlightDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        JsonObject jsonObject = new JsonObject();
+                        jsonObject.addProperty("DeviceNumber", kmlPlacemark.getExtendedData("DeviceNumber"));
+                        jsonObject.addProperty("DeviceType", kmlPlacemark.getExtendedData("DeviceType"));
+                        PhotoVoltaicSnippet photoVoltaicSnippet = new PhotoVoltaicSnippet(MapActivity.this,
+                                kmlPlacemark.getExtendedData("SectionId"),
+                                kmlPlacemark.getExtendedData("DeviceNumber"),
+                                kmlPlacemark.getExtendedData("EquipmentId"),
+                                kmlPlacemark.getExtendedData("NetworkId"),
+                                kmlPlacemark.getExtendedData("DeviceType"),
+                                jsonObject);
+                        photoVoltaicSnippet.show();
+                    }
+
+                    if (isTracing) {
+                        ReSetColor();
+                    }
+                    binding.map.invalidate();
+                    return true;
+                });
             } catch (Exception e) {
                 ErrorPdfLogger.logCrash(MapActivity.this,e);
                 Log.d("Exception", e.getLocalizedMessage());
@@ -10452,7 +10400,51 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
         @Override
         public void onPoint(Marker marker, KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
             try {
+                int i = kmlPlacemark.mGeometry.mCoordinates.size() - 1;
+                GeoPoint geoPoint = new GeoPoint(kmlPoint.mCoordinates.get(i).getLatitude(), kmlPoint.mCoordinates.get(i).getLongitude());
+                marker.setPosition(geoPoint);
+                marker.setRelatedObject(kmlPlacemark);
+                marker.setIcon(new BitmapDrawable(mapView.getContext().getResources(),
+                        addPaddingToBitmap(changeBgTransparentBitmapColor(BitmapImg.Wind(), Color.BLACK), 0, 35)));
 
+                marker.setOnMarkerClickListener((clickedMarker, clickedMapView) -> {
+                    networkId = kmlPlacemark.getExtendedData("NetworkId");
+                    nodeId = kmlPlacemark.getExtendedData("ToNodeId");
+
+                    if (prefManager.getUserType().contains("Edit")) {
+                        DelDeviceNumber = kmlPlacemark.getExtendedData("DeviceNumber");
+                        DelDevice.put(kmlPlacemark.getExtendedData("DeviceNumber"), clickedMarker);
+                    }
+
+                    if (Config.isLoadFlow) {
+                        highlightLoadFlowDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        LoadFlowBox loadFlowBox = new LoadFlowBox(clickedMapView.getContext(), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"), loadFlowList, "");
+                        loadFragment(loadFlowBox, "loadFlowBoxTag");
+                    } else if (Config.isShortCircuit) {
+                        highlightShortCircuitDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        ShortCircuitBox shortCircuitBox = new ShortCircuitBox(clickedMapView.getContext(), shortCircuitList, kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"));
+                        loadFragment(shortCircuitBox, "shortCircuitBoxTag");
+                    } else {
+                        highlightDevice(clickedMarker, kmlPlacemark.getExtendedData("DeviceType"), kmlPlacemark.getExtendedData("DeviceNumber"));
+                        JsonObject jsonObject = new JsonObject();
+                        jsonObject.addProperty("DeviceNumber", kmlPlacemark.getExtendedData("DeviceNumber"));
+                        jsonObject.addProperty("DeviceType", kmlPlacemark.getExtendedData("DeviceType"));
+                        WindSnippet windSnippet = new WindSnippet(MapActivity.this,
+                                kmlPlacemark.getExtendedData("SectionId"),
+                                kmlPlacemark.getExtendedData("DeviceNumber"),
+                                kmlPlacemark.getExtendedData("EquipmentId"),
+                                kmlPlacemark.getExtendedData("NetworkId"),
+                                kmlPlacemark.getExtendedData("DeviceType"),
+                                jsonObject);
+                        windSnippet.show();
+                    }
+
+                    if (isTracing) {
+                        ReSetColor();
+                    }
+                    binding.map.invalidate();
+                    return true;
+                });
             } catch (Exception e) {
                 ErrorPdfLogger.logCrash(MapActivity.this,e);
                 Log.d("Exception", e.getLocalizedMessage());
@@ -10474,25 +10466,139 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
         }
     }
 
-    public class ReactorKmlStyler implements KmlFeature.Styler {
+    public class ShuntReactorKmlStyler implements KmlFeature.Styler {
 
         private int mColor;
         private MapView mapView;
 
-        public ReactorKmlStyler(int mColor, MapView mapView) {
+        public ShuntReactorKmlStyler(int mColor, MapView mapView) {
             this.mColor = mColor;
             this.mapView = mapView;
         }
 
         @Override
-        public void onFeature(Overlay overlay, KmlFeature kmlFeature) {
-
-        }
-
-        @SuppressLint("UseCompatLoadingForDrawables")
-        @Override
         public void onPoint(Marker marker, KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
+            try {
+                int i = kmlPlacemark.mGeometry.mCoordinates.size() - 1;
+                GeoPoint geoPoint = new GeoPoint(kmlPoint.mCoordinates.get(i).getLatitude(), kmlPoint.mCoordinates.get(i).getLongitude());
+                marker.setPosition(geoPoint);
+                marker.setRelatedObject(kmlPlacemark);
+                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
 
+                shuntReactorSectionId.put(kmlPlacemark.getExtendedData("DeviceNumber"), marker);
+                shuntReactorList.add(marker);
+
+                Bitmap reactorBitmap = OTFToBitmapConverter.convertOTFToBitmap(MapActivity.this, "SR", 65f, Color.BLACK);
+
+                int paddingLeft = 0;
+                int paddingTop = 0;
+                int paddingRight = 0;
+                int paddingBottom = 20;
+
+                int newWidth = reactorBitmap.getWidth() + paddingLeft + paddingRight;
+                int newHeight = reactorBitmap.getHeight() + paddingTop + paddingBottom;
+
+                Bitmap paddedBitmap = Bitmap.createBitmap(newWidth, newHeight, reactorBitmap.getConfig());
+                Canvas canvas = new Canvas(paddedBitmap);
+                canvas.drawBitmap(reactorBitmap, paddingLeft, paddingTop, null);
+
+                marker.setIcon(new BitmapDrawable(
+                        mapView.getContext().getResources(),
+                        addPaddingToBitmap(changeBitmapColor(paddedBitmap, Color.BLACK), 0, 10)
+                ));
+
+                marker.setRotation((float) ResponseDataUtils.CalculateAng(
+                        Double.parseDouble(kmlPlacemark.getExtendedData("FromNode_Y_l")),
+                        Double.parseDouble(kmlPlacemark.getExtendedData("ToNode_Y_l")),
+                        Double.parseDouble(kmlPlacemark.getExtendedData("FromNode_X_l")),
+                        Double.parseDouble(kmlPlacemark.getExtendedData("ToNode_X_l"))
+                ));
+
+                marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker, MapView mapView) {
+
+                        networkId = kmlPlacemark.getExtendedData("NetworkId");
+                        nodeId = kmlPlacemark.getExtendedData("ToNodeId");
+
+                        if (prefManager.getUserType().contains("Edit")) {
+                            DelDeviceNumber = kmlPlacemark.getExtendedData("DeviceNumber");
+                            DelDevice.put(kmlPlacemark.getExtendedData("DeviceNumber"), marker);
+                        }
+
+                        if (Config.isLoadFlow) {
+                            highlightLoadFlowDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
+                            LoadFlowBox loadFlowBox = new LoadFlowBox(mapView.getContext(), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"), loadFlowList, kmlPlacemark.getExtendedData("EquipmentId"));
+                            loadFragment(loadFlowBox, "loadFlowBoxTag");
+                            if (isTracing) {
+                                ReSetColor();
+                            }
+                        } else if (Config.isShortCircuit) {
+                            highlightShortCircuitDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
+                            ShortCircuitBox shortCircuitBox = new ShortCircuitBox(mapView.getContext(), shortCircuitList, kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("DeviceType"));
+                            loadFragment(shortCircuitBox, "shortCircuitBoxTag");
+                            if (isTracing) {
+                                ReSetColor();
+                            }
+                        } else if (Config.isLoadAllocation) {
+                            highlightDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
+                            JsonObject jsonObject = new JsonObject();
+                            jsonObject.addProperty("DeviceNumber", kmlPlacemark.getExtendedData("DeviceNumber"));
+                            jsonObject.addProperty("DeviceType", kmlPlacemark.getExtendedData("DeviceType"));
+                            ShuntReactorSnippet shuntReactorSnippet = new ShuntReactorSnippet(MapActivity.this, kmlPlacemark.getExtendedData("SectionId"), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("EquipmentId"), kmlPlacemark.getExtendedData("NetworkId"), kmlPlacemark.getExtendedData("DeviceType"), jsonObject);
+                            shuntReactorSnippet.show();
+                            if (isTracing) {
+                                ReSetColor();
+                            }
+                        } else {
+                            highlightDevice(marker, "18", kmlPlacemark.getExtendedData("DeviceNumber"));
+                            JsonObject jsonObject = new JsonObject();
+                            jsonObject.addProperty("DeviceNumber", kmlPlacemark.getExtendedData("DeviceNumber"));
+                            jsonObject.addProperty("DeviceType", kmlPlacemark.getExtendedData("DeviceType"));
+                            ShuntReactorSnippet shuntReactorSnippet = new ShuntReactorSnippet(MapActivity.this, kmlPlacemark.getExtendedData("SectionId"), kmlPlacemark.getExtendedData("DeviceNumber"), kmlPlacemark.getExtendedData("EquipmentId"), kmlPlacemark.getExtendedData("NetworkId"), kmlPlacemark.getExtendedData("DeviceType"), jsonObject);
+                            shuntReactorSnippet.show();
+                            if (isTracing) {
+                                ReSetColor();
+                            }
+                        }
+
+                        binding.map.invalidate();
+                        return true;
+                    }
+                });
+
+                if (CaSectionList.contains(kmlPlacemark.getExtendedData("SectionId"))) {
+                    int CaSize = CaObject.getJSONArray("features").length();
+                    for (int j = 0; j < CaSize; j++) {
+                        if (CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && kmlPlacemark.getExtendedData("Location").equals("2")) {
+                            String fromY = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(0));
+                            String fromX = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(1));
+                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(fromX), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_X_l")), Double.valueOf(fromY), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_Y_l"))));
+                        } else if (CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && !kmlPlacemark.getExtendedData("Location").equals("2")) {
+                            String toY = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(0));
+                            String toX = String.valueOf(CaObject.getJSONArray("features").getJSONObject(j).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(1));
+                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(kmlPlacemark.getExtendedData("FromNode_X_l")), Double.valueOf(toX), Double.valueOf(kmlPlacemark.getExtendedData("FromNode_Y_l")), Double.valueOf(toY)));
+                        }
+                    }
+                } else if (OhSectionList.contains(kmlPlacemark.getExtendedData("SectionId"))) {
+                    int OhSize = OhObject.getJSONArray("features").length();
+                    for (int k = 0; k < OhSize; k++) {
+                        if (OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && kmlPlacemark.getExtendedData("Location").equals("2")) {
+                            String fromY = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(0));
+                            String fromX = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() - 2).get(1));
+                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(fromX), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_X_l")), Double.valueOf(fromY), Double.valueOf(kmlPlacemark.getExtendedData("ToNode_Y_l"))));
+                        } else if (OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("properties").getString("SectionId").equals(kmlPlacemark.getExtendedData("SectionId")) && OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").length() > 2 && !kmlPlacemark.getExtendedData("Location").equals("2")) {
+                            String toX = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(1));
+                            String toY = String.valueOf(OhObject.getJSONArray("features").getJSONObject(k).getJSONObject("geometry").getJSONArray("coordinates").getJSONArray(1).get(0));
+                            marker.setRotation((float) ResponseDataUtils.CalculateAng(Double.valueOf(kmlPlacemark.getExtendedData("FromNode_X_l")), Double.valueOf(toX), Double.valueOf(kmlPlacemark.getExtendedData("FromNode_Y_l")), Double.valueOf(toY)));
+                        }
+                    }
+                }
+
+            } catch (Exception e) {
+                ErrorPdfLogger.logCrash(MapActivity.this, e);
+                Log.d("Main", e.getMessage());
+            }
         }
 
         @Override
@@ -10501,12 +10607,14 @@ public class MapActivity extends AppCompatActivity implements SearchView.OnQuery
 
         @Override
         public void onPolygon(Polygon polygon, KmlPlacemark kmlPlacemark, KmlPolygon kmlPolygon) {
-
         }
 
         @Override
         public void onTrack(Polyline polyline, KmlPlacemark kmlPlacemark, KmlTrack kmlTrack) {
+        }
 
+        @Override
+        public void onFeature(Overlay overlay, KmlFeature kmlFeature) {
         }
     }
 

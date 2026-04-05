@@ -2,18 +2,16 @@ package com.techlabs.apdcl.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class ShuntReactorModel {
 
     @SerializedName("output")
-    private List<Output> output;
+    private Output output;
 
-    public List<Output> getOutput() {
+    public Output getOutput() {
         return output;
     }
 
-    public void setOutput(List<Output> output) {
+    public void setOutput(Output output) {
         this.output = output;
     }
 

@@ -59,21 +59,25 @@ public class BatteryDeviceInfoDialog extends Dialog {
         root.setBackground(getContext().getDrawable(R.drawable.pop_layout_background));
         prefManager = new PrefManager(mainContext);
 
-        binding.headerTitle.setText("Battery");
+        binding.btnLayout.setBackground(getContext().getDrawable(R.drawable.background_layout));
         binding.bessBtn.setText("Battery");
-        binding.nodeBtn.setVisibility(View.GONE);
-        binding.cableBtn.setVisibility(View.GONE);
-        binding.batteryInfoLayout.setVisibility(View.VISIBLE);
+        binding.bessBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
+        binding.bessBtn.setTextColor(getContext().getColor(R.color.black));
         binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
         binding.cableBtn.setTextColor(getContext().getColor(R.color.white));
         binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
         binding.nodeBtn.setTextColor(getContext().getColor(R.color.white));
-        binding.btnLayout.setBackground(getContext().getDrawable(R.drawable.background_layout));
-        binding.cableBtn.setVisibility(View.INVISIBLE);
+        binding.headerTitle.setText("Battery");
+        binding.batteryInfoLayout.setVisibility(View.VISIBLE);
+        binding.cableInfoLayout.setVisibility(View.GONE);
+        binding.overheadInfoLayout.setVisibility(View.GONE);
+        binding.unbalanceInfoLayout.setVisibility(View.GONE);
+        binding.nodeInfoLayout.setVisibility(View.GONE);
+        binding.cableBtn.setVisibility(View.GONE);
 
         binding.imgClose.setOnClickListener(v -> dismiss());
 
-        binding.bessBtn.setOnClickListener(view -> {
+        binding.bessBtn.setOnClickListener(v -> {
             binding.bessBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
             binding.bessBtn.setTextColor(getContext().getColor(R.color.black));
             binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
@@ -87,83 +91,7 @@ public class BatteryDeviceInfoDialog extends Dialog {
             binding.nodeInfoLayout.setVisibility(View.GONE);
         });
 
-        binding.cableBtn.setOnClickListener(view -> {
-            binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
-            binding.cableBtn.setTextColor(getContext().getColor(R.color.black));
-            binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
-            binding.nodeBtn.setTextColor(getContext().getColor(R.color.white));
-            binding.bessBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
-            binding.bessBtn.setTextColor(getContext().getColor(R.color.white));
-            binding.batteryInfoLayout.setVisibility(View.GONE);
-            binding.nodeInfoLayout.setVisibility(View.GONE);
-            if (binding.cableBtn.getText().toString().equals("Cable")) {
-                binding.cableInfoLayout.setVisibility(View.VISIBLE);
-                binding.overheadInfoLayout.setVisibility(View.GONE);
-                binding.unbalanceInfoLayout.setVisibility(View.GONE);
-                if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(mainContext)) {
-                    if (!requestObject.toString().contains("{}")) {
-                        getCableInfo();
-                    }
-                } else {
-                    final Dialog dialog = new Dialog(getContext());
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setContentView(R.layout.no_internet_dialog);
-                    Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(getContext().getDrawable(R.drawable.pop_background));
-                    LottieAnimationView lottieAnimationView = dialog.findViewById(R.id.animation_view);
-                    Button RetryBtn = dialog.findViewById(R.id.btnDialog);
-                    lottieAnimationView.playAnimation();
-                    RetryBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(getContext())) {
-                                getCableInfo();
-                            }
-                        }
-                    });
-                    dialog.setCanceledOnTouchOutside(false);
-                    dialog.setCancelable(false);
-                    dialog.show();
-                }
-
-            } else if (binding.cableBtn.getText().toString().equals("Balance")) {
-                binding.overheadInfoLayout.setVisibility(View.VISIBLE);
-                binding.cableInfoLayout.setVisibility(View.GONE);
-                binding.unbalanceInfoLayout.setVisibility(View.GONE);
-                if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(mainContext)) {
-                    if (!requestObject.toString().contains("{}")) {
-                        getOverheadInfo();
-                    }
-                } else {
-                    final Dialog dialog = new Dialog(getContext());
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setContentView(R.layout.no_internet_dialog);
-                    Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(getContext().getDrawable(R.drawable.pop_background));
-                    LottieAnimationView lottieAnimationView = dialog.findViewById(R.id.animation_view);
-                    Button RetryBtn = dialog.findViewById(R.id.btnDialog);
-                    lottieAnimationView.playAnimation();
-                    RetryBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(getContext())) {
-                                getOverheadInfo();
-                            }
-                        }
-                    });
-                    dialog.setCanceledOnTouchOutside(false);
-                    dialog.setCancelable(false);
-                    dialog.show();
-                }
-            } else {
-                binding.overheadInfoLayout.setVisibility(View.GONE);
-                binding.cableInfoLayout.setVisibility(View.GONE);
-                binding.batteryInfoLayout.setVisibility(View.GONE);
-                binding.unbalanceInfoLayout.setVisibility(View.VISIBLE);
-                getUnBalanceInfo();
-            }
-
-        });
-
-        binding.nodeBtn.setOnClickListener(view -> {
+        binding.nodeBtn.setOnClickListener(v -> {
             binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
             binding.nodeBtn.setTextColor(getContext().getColor(R.color.black));
             binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
@@ -175,6 +103,40 @@ public class BatteryDeviceInfoDialog extends Dialog {
             binding.cableInfoLayout.setVisibility(View.GONE);
             binding.overheadInfoLayout.setVisibility(View.GONE);
             binding.unbalanceInfoLayout.setVisibility(View.GONE);
+        });
+
+        binding.cableBtn.setOnClickListener(v -> {
+            binding.cableBtn.setBackground(getContext().getDrawable(R.drawable.pop_btn_background));
+            binding.cableBtn.setTextColor(getContext().getColor(R.color.black));
+            binding.nodeBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
+            binding.nodeBtn.setTextColor(getContext().getColor(R.color.white));
+            binding.bessBtn.setBackground(getContext().getDrawable(R.drawable.background_layout));
+            binding.bessBtn.setTextColor(getContext().getColor(R.color.white));
+            binding.batteryInfoLayout.setVisibility(View.GONE);
+            binding.nodeInfoLayout.setVisibility(View.GONE);
+
+            if (binding.cableBtn.getText().toString().equals("Cable")) {
+                binding.cableInfoLayout.setVisibility(View.VISIBLE);
+                binding.overheadInfoLayout.setVisibility(View.GONE);
+                binding.unbalanceInfoLayout.setVisibility(View.GONE);
+                if (!requestObject.toString().contains("{}")) {
+                    getCableInfo();
+                }
+            } else if (binding.cableBtn.getText().toString().equals("Balance")) {
+                binding.overheadInfoLayout.setVisibility(View.VISIBLE);
+                binding.cableInfoLayout.setVisibility(View.GONE);
+                binding.unbalanceInfoLayout.setVisibility(View.GONE);
+                if (!requestObject.toString().contains("{}")) {
+                    getOverheadInfo();
+                }
+            } else if (binding.cableBtn.getText().toString().equals("UnBalance")) {
+                binding.overheadInfoLayout.setVisibility(View.GONE);
+                binding.cableInfoLayout.setVisibility(View.GONE);
+                binding.unbalanceInfoLayout.setVisibility(View.VISIBLE);
+                if (!requestObject.toString().contains("{}")) {
+                    getUnBalanceInfo();
+                }
+            }
         });
 
         if (ResponseDataUtils.checkInternetConnectionAndInternetAccess(getContext())) {
@@ -211,6 +173,30 @@ public class BatteryDeviceInfoDialog extends Dialog {
 
                 if (response.code() == 200 && response.body() != null && response.body().getOutput() != null) {
                     Battery.Output output = response.body().getOutput();
+
+                    // DeviceTypeLine check - like FuseDialog
+                    if (output.getDeviceTypeLine() != null) {
+                        binding.btnLayout.setWeightSum(3);
+                        binding.cableBtn.setVisibility(View.VISIBLE);
+                        if (output.getDeviceTypeLine() == 1) {
+                            binding.cableBtn.setText("Cable");
+                        } else if (output.getDeviceTypeLine() == 2) {
+                            binding.cableBtn.setText("Balance");
+                        } else if (output.getDeviceTypeLine() == 17) {
+                            binding.cableBtn.setText("UnBalance");
+                        }
+                    } else {
+                        binding.btnLayout.setWeightSum(2);
+                        binding.cableBtn.setVisibility(View.GONE);
+                    }
+
+                    // requestObject set - like FuseDialog
+                    if (output.getLineDeviceNumber() != null && output.getDeviceTypeLine() != null) {
+                        requestObject.addProperty("DeviceNumber", output.getLineDeviceNumber());
+                        requestObject.addProperty("DeviceType", output.getDeviceTypeLine().toString());
+                        requestObject.addProperty("UserType", prefManager.getUserType());
+                        requestObject.addProperty("CYMDBNET", prefManager.getDBName());
+                    }
 
                     if (output.getSectionId() != null && !output.getSectionId().isEmpty() && !output.getSectionId().equals("null")) {
                         binding.sectionIdEdt.setText(output.getSectionId());
@@ -310,22 +296,23 @@ public class BatteryDeviceInfoDialog extends Dialog {
                             binding.bChkBoxs.setChecked(false);
                             binding.cChkBoxs.setChecked(true);
                         }
-
-                        if (output.getFromNodeId() != null && !output.getFromNodeId().isEmpty() && !output.getFromNodeId().equals("null")) {
-                            binding.idFromNodesTv.setText(output.getFromNodeId());
-                        }
-
-                        if (output.getToNodeId() != null && !output.getToNodeId().isEmpty() && !output.getToNodeId().equals("null")) {
-                            binding.idToNodeTv.setText(output.getToNodeId());
-                        }
-
-                        if ((output.getToNodeId() != null && !output.getToNodeId().equals("null"))
-                                || (output.getFromNodeId() != null && !output.getFromNodeId().equals("null"))) {
-                            binding.corTypeChk.setChecked(true);
-                        } else {
-                            binding.corTypeChk.setChecked(false);
-                        }
                     }
+
+                    if (output.getFromNodeId() != null && !output.getFromNodeId().isEmpty() && !output.getFromNodeId().equals("null")) {
+                        binding.idFromNodesTv.setText(output.getFromNodeId());
+                    }
+
+                    if (output.getToNodeId() != null && !output.getToNodeId().isEmpty() && !output.getToNodeId().equals("null")) {
+                        binding.idToNodeTv.setText(output.getToNodeId());
+                    }
+
+                    if ((output.getToNodeId() != null && !output.getToNodeId().equals("null"))
+                            || (output.getFromNodeId() != null && !output.getFromNodeId().equals("null"))) {
+                        binding.corTypeChk.setChecked(true);
+                    } else {
+                        binding.corTypeChk.setChecked(false);
+                    }
+
                 } else {
                     Toast.makeText(mainContext, "Unable to load battery data", Toast.LENGTH_SHORT).show();
                 }
@@ -359,115 +346,106 @@ public class BatteryDeviceInfoDialog extends Dialog {
                         Cable cable = response.body();
                         assert cable != null;
                         if (cable.getOutput() != null) {
-                            if (cable.getOutput() != null) {
-                                if (cable.getOutput().getSectionId() != null && !cable.getOutput().getSectionId().isEmpty()) {
-                                    binding.sectionIdEdt.setText(cable.getOutput().getSectionId());
+                            if (cable.getOutput().getSectionId() != null && !cable.getOutput().getSectionId().isEmpty()) {
+                                binding.sectionIdEdt.setText(cable.getOutput().getSectionId());
+                            } else {
+                                binding.sectionIdEdt.setText("UNDEFINED");
+                            }
+
+                            if (cable.getOutput().getPhase() != null) {
+                                if (cable.getOutput().getPhase() == 7) {
+                                    binding.aChkBox.setChecked(true);
+                                    binding.bChkBox.setChecked(true);
+                                    binding.cChkBox.setChecked(true);
+                                } else if (cable.getOutput().getPhase() == 1) {
+                                    binding.aChkBox.setChecked(true);
+                                    binding.bChkBox.setChecked(false);
+                                    binding.cChkBox.setChecked(false);
+                                } else if (cable.getOutput().getPhase() == 3) {
+                                    binding.cChkBox.setChecked(true);
+                                    binding.aChkBox.setChecked(false);
+                                    binding.bChkBox.setChecked(false);
+                                }
+                            }
+
+                            if (cable.getOutput().getDeviceType() != null) {
+                                if (cable.getOutput().getDeviceType() == 1) {
+                                    binding.cableTypeTv.setText("Cable");
+                                } else if (cable.getOutput().getDeviceType() == 2) {
+                                    binding.cableTypeTv.setText("OverHead");
+                                } else if (cable.getOutput().getDeviceType() == 23) {
+                                    binding.cableTypeTv.setText("Unbalance");
+                                }
+                            }
+
+                            if (cable.getOutput().getDeviceNumber() != null && !cable.getOutput().getDeviceNumber().isEmpty() && !cable.getOutput().getDeviceNumber().equals("null")) {
+                                binding.cnumberTv.setText(cable.getOutput().getDeviceNumber());
+                            } else {
+                                binding.cnumberTv.setText("UNDEFINED");
+                            }
+
+                            if (cable.getOutput().getStatus() != null) {
+                                if (cable.getOutput().getStatus() == 0) {
+                                    binding.cstatusTv.setText("Connected");
+                                } else if (cable.getOutput().getStatus() == 1) {
+                                    binding.cstatusTv.setText("DisConnected");
                                 } else {
-                                    binding.sectionIdEdt.setText("UNDEFINED");
+                                    binding.cstatusTv.setText("By Passed");
                                 }
+                            }
 
-                                if (cable.getOutput().getPhase() != null) {
-                                    if (cable.getOutput().getPhase() == 7) {
-                                        binding.aChkBox.setChecked(true);
-                                        binding.bChkBox.setChecked(true);
-                                        binding.cChkBox.setChecked(true);
-                                    } else if (cable.getOutput().getPhase() == 1) {
-                                        binding.aChkBox.setChecked(true);
-                                        binding.bChkBox.setChecked(false);
-                                        binding.cChkBox.setChecked(false);
-                                    } else if (cable.getOutput().getPhase() == 3) {
-                                        binding.cChkBox.setChecked(true);
-                                        binding.aChkBox.setChecked(false);
-                                        binding.bChkBox.setChecked(false);
-                                    }
-                                }
+                            if (cable.getOutput().getLength() != null) {
+                                binding.clengthTv.setText(cable.getOutput().getLength().toString() + " " + "M");
+                            }
 
-                                /*if (cable.getOutput().getZoneId() != null) {
-                                    binding.zoneTv.setText(cable.getOutput().getZoneId().toString());
+                            if (!cable.getOutput().getCableId().isEmpty() && cable.getOutput().getCableId() != null) {
+                                binding.ccableIdTv.setText(cable.getOutput().getCableId());
+                            }
+
+                            if (cable.getOutput().getNumberOfCableInParallel() != null) {
+                                binding.cnbCablePhaseTv.setText(cable.getOutput().getNumberOfCableInParallel().toString() + " " + "runs");
+                            }
+
+                            if (cable.getOutput().getOperatingTemperature() != null) {
+                                binding.condTempTv.setText(cable.getOutput().getOperatingTemperature().toString() + " " + "°F");
+                            }
+
+                            if (cable.getOutput().getCableType() != null) {
+                                if (cable.getOutput().getCableType() == 0) {
+                                    binding.cableTypeTv.setText("1C");
+                                } else if (cable.getOutput().getCableType() == 1) {
+                                    binding.cableTypeTv.setText("3C");
                                 } else {
-                                    binding.zoneTv.setText("UNDEFINED");
-                                }*/
-
-                                if (cable.getOutput().getDeviceType() != null) {
-                                    if (cable.getOutput().getDeviceType() == 1) {
-                                        binding.cableTypeTv.setText("Cable");
-                                    } else if (cable.getOutput().getDeviceType() == 2) {
-                                        binding.cableTypeTv.setText("OverHead");
-                                    } else if (cable.getOutput().getDeviceType() == 23) {
-                                        binding.cableTypeTv.setText("Unbalance");
-                                    }
+                                    binding.cableTypeTv.setText("3.5C");
                                 }
+                            }
 
-                                if (cable.getOutput().getDeviceNumber() != null && !cable.getOutput().getDeviceNumber().isEmpty() && !cable.getOutput().getDeviceNumber().equals("null")) {
-                                    binding.cnumberTv.setText(cable.getOutput().getDeviceNumber());
-                                } else {
-                                    binding.cnumberTv.setText("UNDEFINED");
-                                }
+                            if (cable.getOutput().getMaterialID() != null) {
+                                binding.conductorMaterialTv.setText(cable.getOutput().getMaterialID().toString());
+                            } else {
+                                binding.conductorMaterialTv.setText("Default");
+                            }
 
-                                if (cable.getOutput().getStatus() != null) {
-                                    if (cable.getOutput().getStatus() == 0) {
-                                        binding.cstatusTv.setText("Connected");
-                                    } else if (cable.getOutput().getStatus() == 1) {
-                                        binding.cstatusTv.setText("DisConnected");
-                                    } else {
-                                        binding.cstatusTv.setText("By Passed");
-                                    }
-                                }
+                            if (cable.getOutput().getSizeMm2() != null) {
+                                binding.conductorSizeTv.setText(cable.getOutput().getSizeMm2().toString() + " " + "mm²");
+                            }
 
-                                if (cable.getOutput().getLength() != null) {
-                                    binding.clengthTv.setText(cable.getOutput().getLength().toString() + " " + "M");
-                                }
+                            if (cable.getOutput().getInsulationType() != null && !cable.getOutput().getInsulationType().equals("null")) {
+                                binding.insulationTypeTv.setText(cable.getOutput().getInsulationType());
+                            }
 
-                                if (!cable.getOutput().getCableId().isEmpty() && cable.getOutput().getCableId() != null) {
-                                    binding.ccableIdTv.setText(cable.getOutput().getCableId());
-                                }
+                            if (cable.getOutput().getFROMNodeId() != null && !cable.getOutput().getFROMNodeId().equals("null")) {
+                                binding.idFromNodesTv.setText(cable.getOutput().getFROMNodeId());
+                            }
 
-                                if (cable.getOutput().getNumberOfCableInParallel() != null) {
-                                    binding.cnbCablePhaseTv.setText(cable.getOutput().getNumberOfCableInParallel().toString() + " " + "runs");
-                                }
+                            if (cable.getOutput().getTONodeId() != null && !cable.getOutput().getTONodeId().equals("null")) {
+                                binding.idToNodeTv.setText(cable.getOutput().getTONodeId());
+                            }
 
-                                if (cable.getOutput().getOperatingTemperature() != null) {
-                                    binding.condTempTv.setText(cable.getOutput().getOperatingTemperature().toString() + " " + "°F");
-                                }
-
-                                if (cable.getOutput().getCableType() != null) {
-                                    if (cable.getOutput().getCableType() == 0) {
-                                        binding.cableTypeTv.setText("1C");
-                                    } else if (cable.getOutput().getCableType() == 1) {
-                                        binding.cableTypeTv.setText("3C");
-                                    } else {
-                                        binding.cableTypeTv.setText("3.5C");
-                                    }
-                                }
-
-                                if (cable.getOutput().getMaterialID() != null) {
-                                    binding.conductorMaterialTv.setText(cable.getOutput().getMaterialID().toString());
-                                } else {
-                                    binding.conductorMaterialTv.setText("Default");
-                                }
-
-                                if (cable.getOutput().getSizeMm2() != null) {
-                                    binding.conductorSizeTv.setText(cable.getOutput().getSizeMm2().toString() + " " + "mm²");
-                                }
-
-                                if (cable.getOutput().getInsulationType() != null && !cable.getOutput().getInsulationType().equals("null")) {
-                                    binding.insulationTypeTv.setText(cable.getOutput().getInsulationType());
-                                }
-
-                                if (cable.getOutput().getFROMNodeId() != null && !cable.getOutput().getFROMNodeId().equals("null")) {
-                                    binding.idFromNodesTv.setText(cable.getOutput().getFROMNodeId());
-                                }
-
-                                if (cable.getOutput().getTONodeId() != null && !cable.getOutput().getTONodeId().equals("null")) {
-                                    binding.idToNodeTv.setText(cable.getOutput().getTONodeId());
-                                }
-
-                                if (!cable.getOutput().getToNodeId().equals("null") || !cable.getOutput().getFromNodeId().equals("null")) {
-                                    binding.corTypeChk.setChecked(true);
-                                } else {
-                                    binding.corTypeChk.setChecked(false);
-                                }
-
+                            if (!cable.getOutput().getToNodeId().equals("null") || !cable.getOutput().getFromNodeId().equals("null")) {
+                                binding.corTypeChk.setChecked(true);
+                            } else {
+                                binding.corTypeChk.setChecked(false);
                             }
                         }
                     } catch (Exception e) {
@@ -558,12 +536,6 @@ public class BatteryDeviceInfoDialog extends Dialog {
                                 }
                             }
 
-                            /*if (overhead.getOutput().getZoneId() != null) {
-                                binding.zoneTv.setText(overhead.getOutput().getZoneId().toString());
-                            } else {
-                                binding.zoneTv.setText("UNDEFINED");
-                            }*/
-
                             if (overhead.getOutput().getDeviceType() != null) {
                                 if (overhead.getOutput().getDeviceType() == 1) {
                                     binding.overheadTyeTv.setText("Cable");
@@ -607,7 +579,7 @@ public class BatteryDeviceInfoDialog extends Dialog {
                             }
 
                             if (overhead.getOutput().getPositiveSequenceResistance() != null) {
-                                binding.positiveSequenceFirstTv.setText(overhead.getOutput().getPositiveSequenceResistance().toString() + " " + "R + jXΩ/km");
+                                binding.positiveSequenceFirstTv.setText(overhead.getOutput().getPositiveSequenceResistance().toString() + " " + "R + jXΩ/km");
                             } else {
                                 binding.positiveSequenceFirstTv.setText("");
                             }
@@ -617,7 +589,7 @@ public class BatteryDeviceInfoDialog extends Dialog {
                             }
 
                             if (overhead.getOutput().getZeroSequenceResistance() != null) {
-                                binding.zeroSequenceFirstTv.setText(overhead.getOutput().getZeroSequenceResistance().toString() + " " + "R + jXΩ/km");
+                                binding.zeroSequenceFirstTv.setText(overhead.getOutput().getZeroSequenceResistance().toString() + " " + "R + jXΩ/km");
                             }
 
                             if (overhead.getOutput().getZeroSequenceReactance() != null) {
@@ -734,9 +706,6 @@ public class BatteryDeviceInfoDialog extends Dialog {
                                 }
                             }
 
-                            /*if (unbalanced.getOutput().getZoneId() != null && !unbalanced.getOutput().getZoneId().toString().isEmpty()) {
-                                binding.zoneTv.setText(unbalanced.getOutput().getZoneId().toString());
-                            }*/
                             if (!unbalanced.getOutput().getDeviceType().toString().isEmpty() && !unbalanced.getOutput().getDeviceType().toString().equals("null") && unbalanced.getOutput().getDeviceType() != null) {
                                 if (unbalanced.getOutput().getDeviceType().toString().equals("1")) {
                                     binding.untyeTv.setText("Cable");
@@ -751,30 +720,13 @@ public class BatteryDeviceInfoDialog extends Dialog {
                                 binding.unnumberTv.setText(unbalanced.getOutput().getDeviceNumber());
                             }
 
-                            /*ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(mainContext, R.layout.custom_spinner, statusList);
-                            statusAdapter.setDropDownViewResource(R.layout.custom_spinner);
-                            binding.unstatusTv.setAdapter(statusAdapter);
-                            if (unbalanced.getOutput().getStatus() != null) {
-                                String status = unbalanced.getOutput().getStatus() == 0 ? "Connected" : "Disconnected";
-                                binding.unstatusTv.setText(status, false);
-                            } else {
-                                binding.unstatusTv.setText("Connected", false);
-                            }*/
-
                             if (!unbalanced.getOutput().getLength().toString().isEmpty() && !unbalanced.getOutput().getLength().toString().equals("null") && unbalanced.getOutput().getLength() != null) {
                                 binding.unlengthTv.setText(unbalanced.getOutput().getLength().toString() + " " + "m");
                             }
+
                             if (!unbalanced.getOutput().getLineId().isEmpty() && !unbalanced.getOutput().getLineId().equals("null") && unbalanced.getOutput().getLineId() != null) {
                                 binding.unbalanceLineIdTv.setText(unbalanced.getOutput().getLineId());
                             }
-
-                            /*if (unbalanced.getOutput().getLineId() != null && !unbalanced.getOutput().getLineId().isEmpty() && !unbalanced.getOutput().getLineId().equals("null")) {
-                                currentLineId = unbalanced.getOutput().getLineId();
-                                unBalanceIdList = new String[]{currentLineId};
-                            } else {
-                                currentLineId = "Undefined";
-                                unBalanceIdList = new String[]{"Undefined"};
-                            }*/
 
                             if (!unbalanced.getOutput().getFromNodeId().isEmpty() && !unbalanced.getOutput().getFromNodeId().equals("null") && unbalanced.getOutput().getFromNodeId() != null) {
                                 binding.idFromNodesTv.setText(unbalanced.getOutput().getFromNodeId());
@@ -787,6 +739,7 @@ public class BatteryDeviceInfoDialog extends Dialog {
                             if (!unbalanced.getOutput().getFromNodeY().toString().isEmpty() && !unbalanced.getOutput().getFromNodeY().toString().equals("null") && unbalanced.getOutput().getFromNodeY() != null) {
                                 binding.yFromNodesTv.setText(unbalanced.getOutput().getFromNodeY().toString());
                             }
+
                             if (!unbalanced.getOutput().getToNodeId().isEmpty() && !unbalanced.getOutput().getToNodeId().equals("null") && unbalanced.getOutput().getToNodeId() != null) {
                                 binding.idToNodeTv.setText(unbalanced.getOutput().getToNodeId());
                             }
@@ -804,17 +757,17 @@ public class BatteryDeviceInfoDialog extends Dialog {
                             } else {
                                 binding.corTypeChk.setChecked(false);
                             }
-
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-
                     }
                 } else {
                     View layout = LayoutInflater.from(mainContext).inflate(R.layout.toast_layout, null);
                     TextView Ok = layout.findViewById(R.id.okBtn);
-                    @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView header = layout.findViewById(R.id.headerTv);
-                    @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView description = layout.findViewById(R.id.descripTv);
+                    @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+                    TextView header = layout.findViewById(R.id.headerTv);
+                    @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+                    TextView description = layout.findViewById(R.id.descripTv);
                     header.setText(response.message() + " - " + response.code());
                     description.setText(mainContext.getString(R.string.error_msg));
                     Toast toast = new Toast(mainContext);
@@ -823,7 +776,6 @@ public class BatteryDeviceInfoDialog extends Dialog {
                     toast.setView(layout);
                     toast.show();
                 }
-
             }
 
             @Override
@@ -833,8 +785,10 @@ public class BatteryDeviceInfoDialog extends Dialog {
                 binding.shimmerView.setVisibility(View.GONE);
                 View layout = LayoutInflater.from(mainContext).inflate(R.layout.toast_layout, null);
                 TextView Ok = layout.findViewById(R.id.okBtn);
-                @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView header = layout.findViewById(R.id.headerTv);
-                @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView description = layout.findViewById(R.id.descripTv);
+                @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+                TextView header = layout.findViewById(R.id.headerTv);
+                @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+                TextView description = layout.findViewById(R.id.descripTv);
                 header.setText(mainContext.getString(R.string.error));
                 description.setText(mainContext.getString(R.string.error_msg));
                 Toast toast = new Toast(mainContext);
@@ -842,7 +796,6 @@ public class BatteryDeviceInfoDialog extends Dialog {
                 toast.setDuration(Toast.LENGTH_LONG);
                 toast.setView(layout);
                 toast.show();
-
             }
         });
     }
